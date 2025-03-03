@@ -1,108 +1,101 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Box, Typography, Button } from "@mui/material";
-import servicesImg from "../assets/services.jpg";
+import React from "react";
+import { Box, Typography, Grid, Card, CardContent } from "@mui/material";
+import servicesImg from "../assets/ourServices.png";
 import productsImg from "../assets/products.jpg";
 import enablersImg from "../assets/enablers.jpg";
+import Divider from "@mui/material/Divider";
+
+const servicesList = [
+  
+];
+
+const sections = [
+  {
+    id: "services",
+    title: "Our Services",
+    desc: "We offer a comprehensive suite of QA services.",
+    details: servicesList,
+    img: servicesImg,
+  },
+  {
+    id: "products",
+    title: "Our Products",
+    desc: "Our industry-leading software products are built for capital markets, addressing critical challenges in testing and optimizing operational efficiency. Our expertise ensures your systems are optimized for reliability, scalability, and peak performance.",
+    details: [
+      "QA-Gate - AI-enabled test management and governance suite",
+      "Exgenix - A tailored testing solution for capital markets"
+    ],
+    img: productsImg,
+  },
+  {
+    id: "enablers",
+    title: "Our Enablers",
+    desc: "We design AI-powered tools and utilities that address critical business challenges, with a strong focus on quality assurance. Our bespoke solutions are tailored to meet each client’s unique requirements, enhancing efficiency and precision.",
+    details: [
+      "Automated Test Script Generator – Reduces manual effort by over 85%, streamlining test creation",
+      "AutoPerf Test Analysis Framework – Fully automates the performance testing lifecycle (PTLC), eliminating manual intervention.",
+      "Custom Automation Frameworks – Designed for end-to-end functional testing, ensuring comprehensive coverage and reliability."
+    ],
+    img: enablersImg,
+  },
+];
 
 const WhatWeDo = () => {
-  const [activeSection, setActiveSection] = useState("services");
-
-  // Function to detect the current section while scrolling
-  const handleScroll = () => {
-    const sections = ["services", "products", "enablers"];
-    let currentSection = "services";
-
-    sections.forEach((section) => {
-      const element = document.getElementById(section);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        if (rect.top <= 150 && rect.bottom >= 150) {
-          currentSection = section;
-        }
-      }
-    });
-
-    setActiveSection(currentSection);
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <Box
-      sx={{
-        width: "100vw",
-        minHeight: "100vh",
-        background: "white",
-        paddingBottom: "50px",
-      }}
-    >
-      {/* Sticky Navigation Bar */}
+    <Box id="WhatWeDo" sx={{ width:"auto", minHeight: "100vh", background: "white", py: 6 }}>
+
+
       <Box
         sx={{
-          position: "sticky",
-          // top: 64, // Adjust for navbar height
-          // zIndex: 10,
-          top: 0, // Ensures it stays at the very top
-          zIndex: 1000, // Ensures it stays above other elements
-          background: "rgba(255, 255, 255, 0.8)",
-          padding: "10px 0",
-          display: "flex",
-          justifyContent: "center",
-          gap: "20px",
-          width: "100%",
+          textAlign: "center",
+          maxWidth: "800px",
+          mx: "auto",
+          mt: 6,
+          px: 3,
+          // background: "#1976D2",
+          padding: "30px 15px",
+          borderRadius: "12px",
         }}
       >
-        {["services", "products", "enablers"].map((section) => (
-          <Button
-            key={section}
-            onClick={() =>
-              document
-                .getElementById(section)
-                .scrollIntoView({ behavior: "smooth" })
-            }
-            sx={{
-              fontWeight: activeSection === section ? "bold" : "normal",
-              color: activeSection === section ? "#1976D2" : "#555",
-              borderBottom:
-                activeSection === section ? "3px solid #1976D2" : "none",
-            }}
-          >
-            {section.charAt(0).toUpperCase() + section.slice(1)}
-          </Button>
-        ))}
-      </Box>
+        <Divider sx={{ width: "80px", mx: "auto", my: 2, backgroundColor: "#1976D2" }} />
+        <Typography variant="h4" fontWeight="bold" color="#1565c0">
+          What We Do
+        </Typography>
+        <Typography variant="body1" sx={{ mt: 2, color: "#000000" }}>
+            We are a next-gen tech company revolutionizing software testing with AI-driven intelligence. Our smart solutions accelerate time-to-market, enhance reliability, and optimize costs, ensuring superior digital experiences and a competitive edge.
+        </Typography>
+      </Box> 
 
-      {/* Sections */}
-      {[
-        {
-          id: "services",
-          title: "Our Services",
-          desc: "We offer a comprehensive suite of QA services, including automation testing, performance testing, DevOps, SRE, and development solutions. Our expertise ensures your systems are optimized for reliability, scalability, and peak performance.",
-          img: servicesImg,
-          link: "/services",
-        },
-        {
-          id: "products",
-          title: "Our Products",
-          desc: "Our industry-leading software products are built for capital markets, addressing critical challenges in testing and optimizing operational efficiency.",
-          img: productsImg,
-          link: "/products",
-        },
-        {
-          id: "enablers",
-          title: "Our Enablers",
-          desc: "We develop AI-powered tools and utilities that tackle critical business challenges, especially in quality assurance, delivering bespoke solutions tailored to each client’s unique needs.",
-          img: enablersImg,
-          link: "/enablers",
-        },
-      ].map(({ id, title, desc, img, link }, index) => (
+            {/* Key Offerings */}
+      <Grid container spacing={4} sx={{ mt: 6, px: { xs: 2, md: 6 }, justifyContent: "center" }}>
+        {[
+          { title: "AI-Powered Software Quality", description: "Auto-generate, optimize, and execute test cases with precision." },
+          { title: "Tailored Solutions", description: "Innovative products and enablers to address specific quality challanges." },
+          { title: "SDET Engineering", description: "Software services encompassing Performance Engineering, Automation, SRE, DevOps, and all aspects of non-functional testing" },
+        ].map((item, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index}>
+            <Card sx={{ boxShadow: "0px 4px 10px rgb(159, 210, 228)", // Blue shadow
+    borderRadius: "12px", transition: "transform 0.3s", minHeight:"150px" ,":hover": { transform: "scale(1.05)" } }}>
+              <CardContent>
+                
+                <Typography variant="h6" fontWeight="bold" gutterBottom>
+                  {item.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {item.description}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+
+      
+
+      {sections.map(({ id, title, desc, details, img }, index) => (
+        <Box key={id} id={id}>
+          
         <Box
-          key={id}
-          id={id}
           sx={{
             display: "flex",
             flexDirection: {
@@ -112,7 +105,7 @@ const WhatWeDo = () => {
             alignItems: "center",
             justifyContent: "center",
             padding: { xs: "30px 20px", md: "50px 0" },
-            width: "100vw", // Ensure full width
+            width: "90vw", // Ensure full width
           }}
         >
           {/* Text Section */}
@@ -130,25 +123,14 @@ const WhatWeDo = () => {
             >
               {title}
             </Typography>
-            <Typography sx={{ marginTop: "10px", color: "#555" }}>
+            <Typography sx={{ marginTop: "10px", color: "#000000" }}>
               {desc}
             </Typography>
-            <Button
-              component={Link}
-              to={link}
-              variant="contained"
-              sx={{
-                marginTop: "20px",
-                background: "#1976D2",
-                ":hover": { background: "#1565C0" },
-              }}
-            >
-              More Details
-            </Button>
-          </Box>
+            
+          </Box> 
 
           {/* Image Section */}
-          <Box
+         <Box
             sx={{
               flex: 1,
               display: "flex",
@@ -163,10 +145,36 @@ const WhatWeDo = () => {
                 maxWidth: "600px",
                 height: "auto",
                 borderRadius: "10px",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                // boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
               }}
             />
           </Box>
+        </Box> 
+
+        <Grid container spacing={2} sx={{ px: { xs: 2, md: 6 }, justifyContent: "center" }}>
+            {details.map((item, itemIndex) => (
+              <Grid item xs={12} sm={6} md={4} key={`${index}-${itemIndex}`}>
+                <Card
+                  sx={{
+                    boxShadow: 2,
+                    borderRadius: "10px",
+                    transition: "transform 0.3s",
+                    ":hover": { transform: "scale(1.05)" },
+                    textAlign: "center",
+                    // padding: "10px",
+                  }}
+                >
+                  <CardContent>
+                    <Typography variant="body1" fontWeight="bold">
+                      {item}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+        </Grid> 
+
+
         </Box>
       ))}
     </Box>

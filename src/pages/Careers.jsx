@@ -5,19 +5,19 @@ import careerImage from "../assets/career.jpg"; // Use an appropriate image from
 const Careers = () => {
   const jobListings = [
     {
-      title: "Software Engineer (Backend)",
+      title: "Java Deveoper (3 to 5 years of experience)",
       location: "Remote",
-      description: "Work with cutting-edge technologies to build scalable backend systems.",
+      description: "Develop, test, and maintain scalable Java applications using Spring Boot, Hibernate, and microservices architecture. Work on RESTful APIs, databases, and cloud-based deployments while ensuring clean, efficient, and secure code.",
     },
     {
-      title: "Frontend Developer",
-      location: "Bangalore, India",
-      description: "Design and develop beautiful user interfaces with React and Material UI.",
+      title: "Performance Engineer (3 to 5 years of experience)",
+      location: "Remote",
+      description: "Plan, execute, and analyze performance tests using tools like JMeter, LoadRunner, or Neoload. Identify performance bottlenecks, optimize system performance, and collaborate with development teams to ensure scalable and high-performing applications.",
     },
     {
-      title: "QA Engineer",
+      title: "Automation Engineer (3 to 5 years of experience)",
       location: "Remote",
-      description: "Ensure top-notch quality and performance of our applications.",
+      description: "Design, develop, and maintain automated test scripts for web, mobile, and API testing. Work with Selenium, Appium, or similar tools to enhance test coverage, improve efficiency, and integrate automation into CI/CD pipelines.",
     },
   ];
 
@@ -50,7 +50,7 @@ const Careers = () => {
       <Grid container spacing={3} sx={{ mt: 5, px: 4, justifyContent: "center" }}>
         {jobListings.map((job, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card sx={{ background: "#FFFFFF", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" }}>
+            <Card sx={{ background: "#FFFFFF", boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)" , padding:"11px", borderRadius:"8px"}}>
               <CardContent>
                 <Typography variant="h6" fontWeight="bold">{job.title}</Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
@@ -65,6 +65,12 @@ const Careers = () => {
           </Grid>
         ))}
       </Grid>
+
+
+      <Box fontWeight="bold" sx={{ textAlign: "center", maxWidth: "800px", mx: "auto", mt: 4, px: 2, color:"#1565c0"}}>
+        <Typography fontWeight={"Bold"}>Want to kickstart your career with us? Apply for intership.</Typography>
+      </Box>
+
     </Box>
   );
 };

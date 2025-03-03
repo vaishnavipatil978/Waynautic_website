@@ -43,7 +43,7 @@ const Footer = () => {
         <IconButton href="mailto:contact@waynautic.com" sx={{ color: "#FFFFFF", opacity: 0.7, "&:hover": { opacity: 1 } }}>
           <Mail />
         </IconButton>
-        <IconButton href="tel:+1234567890" sx={{ color: "#FFFFFF", opacity: 0.7, "&:hover": { opacity: 1 } }}>
+        <IconButton href="tel:+919637611936" sx={{ color: "#FFFFFF", opacity: 0.7, "&:hover": { opacity: 1 } }}>
           <Phone />
         </IconButton>
         <IconButton href="#" sx={{ color: "#FFFFFF", opacity: 0.7, "&:hover": { opacity: 1 } }}>

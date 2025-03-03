@@ -104,7 +104,7 @@ const ContactUs = () => {
             <Grid item xs={12} sm={4}>
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 <Phone sx={{ color: "#FFD700" }} />
-                <Typography variant="body1">+91 98765 43210</Typography>
+                <Typography variant="body1">+91 9637611936</Typography>
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>

@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import WhatWeDo from "./pages/WhatWeDo";
 import WhoWeAre from "./pages/WhoWeAre";
-import KnowledgeBase from "./pages/KnowledgeBase";
+import CaseStudy from "./pages/CaseStudy";
 import Careers from "./pages/Careers";
 import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
@@ -22,7 +22,7 @@ function App() {
           <Route path="/" element={ <Home />} />
           <Route path="/what-we-do" element={<WhatWeDo />} />
           <Route path="/who-we-are" element={<WhoWeAre />} />
-          <Route path="/knowledge-base" element={<KnowledgeBase />} />
+          <Route path="/CaseStudy" element={<CaseStudy />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact-us" element={<ContactUs />} />
         </Routes>

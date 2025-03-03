@@ -3,37 +3,39 @@ import { Container, Box, Typography, Grid, Card, CardContent, Avatar, Divider } 
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import InsightsIcon from "@mui/icons-material/Insights";
 import EngineeringIcon from "@mui/icons-material/Engineering";
-import backgroundImage from "../assets/background.jpg"; // Replace with actual path
+// import backgroundImage from "../assets/background.jpg"; // Replace with actual path
 import missionImage from "../assets/mission.jpg"; // Replace with actual path
 import lifeAtWaynauticImage from "../assets/team.jpg"; // Replace with actual path
+import backgroundImage from "../assets/WhoWeAre.png"; // Replace with actual path
+import { Business, ShoppingCart, LocalHospital, PrecisionManufacturing, PhoneIphone, SportsEsports } from "@mui/icons-material";
 
-// Sample team members (Replace images with actual URLs)
-const teamMembers = [
-  { name: "Tyler Murphy", position: "Director", image: "path/to/tyler.jpg" },
-  { name: "Christina Fuller", position: "Controller", image: "path/to/christina.jpg" },
-  { name: "Dylan Robertson", position: "Head of IT", image: "path/to/dylan.jpg" },
-  { name: "Juan Martinez", position: "Head of Operations", image: "path/to/juan.jpg" },
-  { name: "Joel Garza", position: "Project Manager", image: "path/to/joel.jpg" },
-  { name: "Owen McKenzie", position: "Support Manager", image: "path/to/owen.jpg" },
+
+const domains = [
+  { title: "Banking, Financial Services, and Insurance (BFSI)", icon: <Business fontSize="large" /> },
+  { title: "Retail and E-Commerce", icon: <ShoppingCart fontSize="large" /> },
+  { title: "Healthcare and Life Sciences", icon: <LocalHospital fontSize="large" /> },
+  { title: "Manufacturing", icon: <PrecisionManufacturing fontSize="large" /> },
+  { title: "Telecom", icon: <PhoneIphone fontSize="large" /> },
+  { title: "Gaming and Entertainment", icon: <SportsEsports fontSize="large" /> },
 ];
 
 const WhoWeAre = () => {
   return (
-    <Box
+    <Box id="WhoWeAre" 
       sx={{
         backgroundColor: "#F9FAFC",
         minHeight: "100vh",
-        pb: 6,
         overflowX: "hidden",
       }}
     >
       {/* Hero Section with Background Image */}
       <Box
         sx={{
-          height: "60vh",
+          minHeight: "260px",
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -44,12 +46,12 @@ const WhoWeAre = () => {
         }}
       >
 
-      <Box textAlign="center" mt={6} mb={8}>
-        <Typography variant="h3" fontWeight={700}>
+      <Box textAlign="center" mt={6} >
+        <Typography variant="h3" fontWeight={700} color="#1565c0">
           Who We Are
         </Typography>
-        <Typography padding={5}>
-          At Waynautic Technologies, our mission is to provide AI-powered solutions that help businesses <br></br>navigate their technological challenges with precision and innovation.
+        <Typography padding={5} color="#000000" >
+        At Waynautic Technologies, our mission is to deliver AI-powered software solutions that streamline testing, optimize performance, and enhance software quality. We help businesses navigate complex technological challenges with precision, efficiency, and innovation.
         </Typography>
       </Box>   
 
@@ -57,7 +59,7 @@ const WhoWeAre = () => {
 
       </Box>
 
-      {/* About Section */}
+      {/* About Section
       <Container>
 
       <Box sx={{ width: "100%", background: "#F4F7FC", py: 6 }}>
@@ -95,112 +97,48 @@ const WhoWeAre = () => {
           />
         </Grid>
       </Grid>
-    </Box>
+    </Box> 
 
 
-    <Box sx={{ width: "100%", background: "#F4F7FC", py: 6 }}>
-      <Typography variant="h4" fontWeight="bold" textAlign="center" color="#0A192F">
-          About Us
-      </Typography>
+      </Container>*/}
 
-      <Divider sx={{ width: "80px", mx: "auto", my: 2, backgroundColor: "#1976D2" }} />
-
-      <Grid container spacing={4} sx={{ mt: 4, px: { xs: 2, md: 6 }, alignItems: "center" }}>
-        <Grid item xs={12} md={6}>
-        <Box
-            component="img"
-            src={missionImage}
-            alt="Life at Waynautic"
+    <Box sx={{ width: "100vw", minHeight: "100vh", background: "white" }}>
+          <Box
             sx={{
-              width: "100%",
+              textAlign: "center",
+              maxWidth: "800px",
+              mx: "auto",
+              
+              px: 3,
+              padding: "30px 15px",
               borderRadius: "12px",
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
             }}
-          />
-        </Grid>
-        
-        <Grid item xs={12} md={6}>
-          
+          >
+            <Typography variant="h4" fontWeight="bold" color="#1976D2">
+              Serving Clients Across Domains
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 2, color: "#555" }}>
+              We provide AI-driven testing solutions across multiple industries.
+            </Typography>
+          </Box>
 
-<Card sx={{ boxShadow: 3, borderRadius: "12px", background: "white", p: 3 }}>
-          <CardContent>
-              <Typography variant="body1" color="text.secondary">
-              At Waynautic Technologies Private Limited, we are dedicated to delivering excellence by helping businesses navigate their technological challenges with precision and innovation. Our mission is simple: to provide AI-powered, cutting-edge solutions and services that solve our clients’ most complex problems, driving them toward success in an ever-evolving digital landscape.
-
-              With a core focus on Performance Engineering, Quality Assurance, and Custom Solutions, we pride ourselves on offering tailored strategies that empower our clients to achieve their business objectives efficiently and effectively. Whether it’s through our proprietary software products designed for the capital markets or our comprehensive suite of IT services, we consistently strive to deliver value and measurable results.
-              </Typography>
-            </CardContent>
-          </Card>
-
-
-        </Grid>
-      </Grid>
-    </Box>
-
-
-        {/* What We Do Section */}
-        <Box textAlign="center" m={8}>
-          <Typography variant="h4" fontWeight={600} sx={{ color: "#000000" }}>
-            What We Do
-          </Typography>
-          <Divider sx={{ width: "80px", mx: "auto", my: 2, backgroundColor: "#1976D2" }} />
-          <Grid container spacing={4} justifyContent="center">
-            {[
-              { icon: <EngineeringIcon fontSize="large" />, title: "Engineering Excellence", text: "We create robust, scalable, and innovative solutions." },
-              { icon: <InsightsIcon fontSize="large" />, title: "Data-Driven Decisions", text: "Our solutions leverage AI and analytics to drive results." },
-              { icon: <PeopleAltIcon fontSize="large" />, title: "Customer-Centric Approach", text: "We prioritize user experience and client needs." },
-            ].map((item, index) => (
-              <Grid item xs={12} sm={4} key={index}>
-                <Card
-                  sx={{
-                    p: 3,
-                    textAlign: "center",
-                    borderRadius: 3,
-                    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-                  }}
-                >
-                  <Box sx={{ color: "#1976D2", mb: 2 }}>{item.icon}</Box>
-                  <Typography variant="h6" sx={{ color: "#000000", fontWeight: 600 }}>
-                    {item.title}
-                  </Typography>
-                  <Typography variant="body2" sx={{ color: "gray", mt: 1 }}>
-                    {item.text}
-                  </Typography>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
-
-        {/* Team Section */}
-        <Box textAlign="center">
-          <Typography variant="h4" fontWeight={600} sx={{ color: "#000000", mb: 4 }}>
-            Meet Our Team
-          </Typography>
-          <Grid container spacing={4} justifyContent="center">
-            {teamMembers.map((member, index) => (
+          <Grid container spacing={2} sx={{ px: { xs: 2, md: 6 }, justifyContent: "center", mt: 4 }}>
+            {domains.map(({ title, icon }, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Card
                   sx={{
-                    p: 3,
+                    boxShadow: 2,
+                    borderRadius: "10px",
+                    transition: "transform 0.3s",
+                    ":hover": { transform: "scale(1.05)" },
                     textAlign: "center",
-                    borderRadius: 3,
-                    boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-                    transition: "transform 0.3s ease-in-out",
-                    "&:hover": { transform: "scale(1.05)" },
+                    padding: "20px",
                   }}
                 >
-                  <Avatar
-                    alt={member.name}
-                    src={member.image}
-                    sx={{ width: 100, height: 100, mx: "auto", mb: 2 }}
-                  />
                   <CardContent>
-                    <Typography variant="h6" sx={{ color: "#000000", fontWeight: 600 }}>
-                      {member.name}
-                    </Typography>
-                    <Typography variant="body2" sx={{ color: "gray" }}>
-                      {member.position}
+                    {icon}
+                    <Typography variant="body1" fontWeight="bold" sx={{ mt: 2 }}>
+                      {title}
                     </Typography>
                   </CardContent>
                 </Card>
@@ -208,7 +146,7 @@ const WhoWeAre = () => {
             ))}
           </Grid>
         </Box>
-      </Container>
+
     </Box>
   );
 };

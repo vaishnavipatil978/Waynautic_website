@@ -1,115 +1,92 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; // Import React Router for navigation
-import {
-  AppBar,
-  Toolbar,
-  Box,
-  Button,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Popper,
-  Paper,
-  Card,
-  CardContent,
-  Typography,
-} from "@mui/material";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { AppBar, Toolbar, Box, Button, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
 import { Menu as MenuIcon, Close as CloseIcon } from "@mui/icons-material";
-import logo from "../assets/Waynautic.png"; // Import your logo
+import logo from "../assets/Waynautic.png";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [activeSection, setActiveSection] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  // Handle hover for dropdown
-  const handleMouseEnter = (event) => {
-    setAnchorEl(event.currentTarget);
+  // Scroll to section, navigating to home first if necessary
+  const scrollToSection = (id) => {
+    if (location.pathname !== "/") {
+      navigate("/");
+      setTimeout(() => {
+        scrollToElement(id);
+      }, 100);
+    } else {
+      scrollToElement(id);
+    }
   };
 
-  const handleMouseLeave = () => {
-    setAnchorEl(null);
+  const scrollToElement = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+      setActiveSection(id);
+    }
   };
 
-  const open = Boolean(anchorEl);
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["WhatWeDo", "WhoWeAre", "CaseStudy"];
+      let currentSection = "";
+
+      sections.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            currentSection = id;
+          }
+        }
+      });
+
+      setActiveSection(currentSection);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <>
-      {/* Navbar with White Background */}
       <AppBar
         position="fixed"
         sx={{
           width: "100%",
           background: "#FFFFFF",
-          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Adds shadow
-          //   borderBottom: "1px solid #ddd",
-          // minHeight: "90px",
+          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
         }}
       >
-        <Toolbar
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "100%",
-            maxWidth: "100%", // Ensure it does not exceed screen width
-            padding: "0 16px", // Prevent content from touching screen edges
-            boxSizing: "border-box",
-            // minHeight: "70px",
-          }}
-        >
-          {/* Left Section - Logo */}
-          <Box
-            component={Link}
-            to="/"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              textDecoration: "none",
-            }}
-          >
-            <img
-              src={logo}
-              alt="Waynautic Logo"
-              style={{ height: "45px", width: "auto", padding: "2"}}
-            />
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0 16px" }}>
+          <Box component={Link} to="/" sx={{ display: "flex", alignItems: "center", textDecoration: "none" }}>
+            <img src={logo} alt="Waynautic Logo" style={{ height: "45px", width: "auto" }} />
           </Box>
 
-          {/* Center Section (Desktop Only) */}
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
-            {/* Dropdown for "What We Do?" */}
-            <Button
-              onMouseEnter={handleMouseEnter}
-              component={Link}
-              to="/what-we-do"
-              sx={{
-                color: "#1976D2",
-                fontWeight: "bold",
-                ":hover": { background: "#E3F2FD" },
-              }}
-            >
-              What We Do?
-            </Button>
-
-            {/* Other Navigation Links */}
-            {[
-              { label: "Who are we?", path: "/who-we-are" },
-              { label: "Knowledge Base", path: "/knowledge-base" },
-            ].map((item, index) => (
+            {[{ label: "What We Do?", id: "WhatWeDo" }, { label: "Who Are We?", id: "WhoWeAre" }, { label: "Case Studies", id: "CaseStudy" }].map((item) => (
               <Button
-                key={index}
-                component={Link}
-                to={item.path}
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
                 sx={{
-                  color: "#1976D2",
+                  color : "#1976D2",
+                  // color: activeSection === item.id ? "#fff" : "#1976D2",
+                  background: activeSection === item.id ? "#E3F2FD" : "transparent",
                   fontWeight: "bold",
-                  ":hover": { background: "#E3F2FD" },
+                  // ":hover": { border: "none" },
+                  ":hover": { background: "#E3F2FD", border: "none" },
+                  outline: "none", // Removes the default focus outline
+                  border: "none", // Ensures no border appears
+                  boxShadow: "none", // Removes any box-shadow effect
+                  "&:focus": { outline: "none", border: "none", boxShadow: "none" },
                 }}
               >
                 {item.label}
@@ -117,88 +94,42 @@ const Navbar = () => {
             ))}
           </Box>
 
-          {/* Right Section (Desktop Only) */}
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
-            <Button
-              component={Link}
-              to="/careers"
-              sx={{
-                color: "#1976D2",
-                fontWeight: "bold",
-                ":hover": { background: "#E3F2FD" },
-              }}
-            >
+            <Button component={Link} to="/careers" sx={{ color: "#1976D2", fontWeight: "bold" }}>
               Careers
             </Button>
-            <Button
-              component={Link}
-              to="/contact-us"
-              variant="contained"
-              sx={{
-                background: "#1976D2",
-                color: "#fff",
-                fontWeight: "bold", // Set consistent font weight
-                ":hover": { background: "#1565C0", color: "#fff" },
-              }}
-            >
+            <Button component={Link} to="/contact-us" variant="contained" sx={{ background: "#1976D2", color: "#fff", fontWeight: "bold" }}>
               Contact Us
             </Button>
           </Box>
 
-          {/* Mobile Menu Button */}
-          <IconButton
-            sx={{ display: { xs: "block", md: "none" }, color: "#1976D2" }}
-            onClick={handleDrawerToggle}
-          >
+          <IconButton sx={{ display: { xs: "block", md: "none" }, color: "#1976D2" }} onClick={handleDrawerToggle}>
             <MenuIcon />
           </IconButton>
         </Toolbar>
       </AppBar>
 
-      {/* Push Content Down (So It Doesn't Overlap) */}
       <Toolbar />
 
-      {/* Sidebar Drawer for Mobile */}
       <Drawer anchor="right" open={mobileOpen} onClose={handleDrawerToggle}>
-        <Box
-          sx={{
-            width: 250,
-            height: "100vh",
-            background: "#FFFFFF",
-            color: "#1976D2",
-          }}
-        >
-          {/* Close Button */}
-          <IconButton
-            sx={{ float: "right", margin: 1, color: "#1976D2" }}
-            onClick={handleDrawerToggle}
-          >
+        <Box sx={{ width: 250, height: "100vh", background: "#FFFFFF", color: "#1976D2" }}>
+          <IconButton sx={{ float: "right", margin: 1, color: "#1976D2" }} onClick={handleDrawerToggle}>
             <CloseIcon />
           </IconButton>
-
-          {/* Drawer Menu */}
           <List>
-            {[
-              { label: "What We Do?", path: "/what-we-do" },
-              { label: "Who are we?", path: "/who-we-are" },
-              { label: "Knowledge Base", path: "/knowledge-base" },
-              { label: "Careers", path: "/careers" },
-              { label: "Contact Us", path: "/contact-us" },
-            ].map((item, index) => (
-              <ListItem key={index} disablePadding>
+            {[{ label: "What We Do?", id: "WhatWeDo" }, { label: "Who Are We?", id: "WhoWeAre" }, { label: "Knowledge Base", id: "CaseStudy" }].map((item) => (
+              <ListItem key={item.id} disablePadding>
                 <ListItemButton
-                  component={Link}
-                  to={item.path}
-                  onClick={handleDrawerToggle}
+                  onClick={() => {
+                    scrollToSection(item.id);
+                    handleDrawerToggle();
+                  }}
+                  sx={{
+                    background: activeSection === item.id ? "#E3F2FD" : "transparent",
+                    "&:hover": { background: "#E3F2FD" },
+                  }}
                 >
-                  <ListItemText
-                    primary={item.label}
-                    sx={{
-                      textAlign: "center",
-                      color: "#1976D2",
-                      fontWeight: "bold",
-                    }}
-                  />
+                  <ListItemText primary={item.label} sx={{ textAlign: "center", color: "#1976D2", fontWeight: "bold" }} />
                 </ListItemButton>
               </ListItem>
             ))}

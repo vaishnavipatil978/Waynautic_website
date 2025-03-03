@@ -8,7 +8,7 @@ import blogImage from "../assets/blog.jpg";
 import QAImage from "../assets/QA.jpg";
 import CSImage from "../assets/caseStudy.jpg";
 
-const KnowledgeBase = () => {
+const CaseStudy = () => {
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -25,30 +25,6 @@ const KnowledgeBase = () => {
 
   const sectionDetails = [
     {
-      id: "blogs", // Added id field for consistency
-      title: "Blogs",
-      path: "/blogs",
-      items: [
-        { title: "Tech Trends 2025", description: "Latest innovations shaping the future.", image: blogImage, link: "/blogs/tech-trends" },
-        { title: "AI in Business", description: "How AI is transforming industries.", image: blogImage, link: "/blogs/ai-business" },
-        { title: "Cloud Security", description: "Best practices for secure cloud storage.", image: blogImage, link: "/blogs/cloud-security" },
-        { title: "Tech Trends 2025", description: "Latest innovations shaping the future.", image: blogImage, link: "/blogs/tech-trends" },
-        { title: "AI in Business", description: "How AI is transforming industries.", image: blogImage, link: "/blogs/ai-business" },
-        { title: "Cloud Security", description: "Best practices for secure cloud storage.", image: blogImage, link: "/blogs/cloud-security" },
-      ],
-    },
-    {
-      id: "qna",
-      title: "Q & A",
-      path: "/qna",
-      items: [
-        { title: "What is Kubernetes?", description: "A deep dive into container orchestration.", image: QAImage, link: "/qna/kubernetes" },
-        { title: "REST vs GraphQL", description: "Which API style is better?", image: QAImage, link: "/qna/rest-graphql" },
-        { title: "What is Spring Boot?", description: "A deep dive into container orchestration.", image: QAImage, link: "/qna/kubernetes" },
-        { title: "Python Roadmap", description: "Which API style is better?", image: QAImage, link: "/qna/rest-graphql" },
-      ],
-    },
-    {
       id: "case-studies",
       title: "Case Studies",
       path: "/case-studies",
@@ -62,70 +38,9 @@ const KnowledgeBase = () => {
   ];
 
 
-  const [activeSection, setActiveSection] = useState("blogs");
-  
-    // Function to detect the current section while scrolling
-    const handleScroll = () => {
-      const sections = ["blogs", "qna", "case-studies"];
-      let currentSection = "blogs";
-  
-      sections.forEach((section) => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= 150 && rect.bottom >= 150) {
-            currentSection = section;
-          }
-        }
-      });
-  
-      setActiveSection(currentSection);
-    };
-  
-    useEffect(() => {
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
-
-
   return (
-    <Box>
-      {/* Sticky Navigation Bar */}
-            <Box
-              sx={{
-                position: "sticky",
-                // top: 64, // Adjust for navbar height
-                // zIndex: 10,
-                top: 0, // Ensures it stays at the very top
-                zIndex: 1000, // Ensures it stays above other elements
-                background: "rgba(255, 255, 255, 0.8)",
-                padding: "10px 0",
-                display: "flex",
-                justifyContent: "center",
-                gap: "20px",
-                width: "100%",
-              }}
-            >
-              {["blogs", "qna", "case-studies"].map((section) => (
-                <Button
-                  key={section}
-                  onClick={() =>
-                    document
-                      .getElementById(section)
-                      .scrollIntoView({ behavior: "smooth" })
-                  }
-                  sx={{
-                    fontWeight: activeSection === section ? "bold" : "normal",
-                    color: activeSection === section ? "#1976D2" : "#555",
-                    borderBottom:
-                      activeSection === section ? "3px solid #1976D2" : "none",
-                  }}
-                >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </Button>
-              ))}
-            </Box>
-
+    <Box id="CaseStudy" >
+      
       {/* Keep the rest of the KnowledgeBase page unchanged */}
       {sectionDetails.map((section, index) => (
 
@@ -194,4 +109,4 @@ const KnowledgeBase = () => {
   );
 };
 
-export default KnowledgeBase;
+export default CaseStudy;
