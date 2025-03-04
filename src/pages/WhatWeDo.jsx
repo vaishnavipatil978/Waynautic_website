@@ -1,13 +1,12 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Box, Typography, Grid, Card, CardContent } from "@mui/material";
 import servicesImg from "../assets/ourServices.png";
 import productsImg from "../assets/products.jpg";
 import enablersImg from "../assets/enablers.jpg";
 import Divider from "@mui/material/Divider";
+import backgroundImage from "../assets/WhoWeAre.png"; // Replace with actual path
 
-const servicesList = [
-  
-];
+const servicesList = [];
 
 const sections = [
   {
@@ -23,7 +22,7 @@ const sections = [
     desc: "Our industry-leading software products are built for capital markets, addressing critical challenges in testing and optimizing operational efficiency. Our expertise ensures your systems are optimized for reliability, scalability, and peak performance.",
     details: [
       "QA-Gate - AI-enabled test management and governance suite",
-      "Exgenix - A tailored testing solution for capital markets"
+      "Exgenix - A tailored testing solution for capital markets",
     ],
     img: productsImg,
   },
@@ -34,21 +33,32 @@ const sections = [
     details: [
       "Automated Test Script Generator – Reduces manual effort by over 85%, streamlining test creation",
       "AutoPerf Test Analysis Framework – Fully automates the performance testing lifecycle (PTLC), eliminating manual intervention.",
-      "Custom Automation Frameworks – Designed for end-to-end functional testing, ensuring comprehensive coverage and reliability."
+      "Custom Automation Frameworks – Designed for end-to-end functional testing, ensuring comprehensive coverage and reliability.",
     ],
     img: enablersImg,
   },
 ];
 
 const WhatWeDo = () => {
+
+  useEffect(() => {
+      window.scrollTo(0, 0); // Scroll to top when component mounts
+    }, []);
+
+
   return (
-    <Box id="WhatWeDo" sx={{ width:"auto", minHeight: "100vh", background: "white", py: 6 }}>
-
-
+    <Box
+      id="WhatWeDo"
+      sx={{ width: "auto", minHeight: "100vh", background: "white", py: 6 }}
+    >
       <Box
         sx={{
+          minHeight: "260px",
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
           textAlign: "center",
-          maxWidth: "800px",
           mx: "auto",
           mt: 6,
           px: 3,
@@ -57,21 +67,35 @@ const WhatWeDo = () => {
           borderRadius: "12px",
         }}
       >
-        <Divider sx={{ width: "80px", mx: "auto", my: 2, backgroundColor: "#1976D2" }} />
+        <Divider
+          sx={{ width: "80px", mx: "auto", my: 2, backgroundColor: "#1976D2" }}
+        />
         <Typography variant="h4" fontWeight="bold" color="#1565c0">
           What We Do
         </Typography>
         <Typography variant="body1" sx={{ mt: 2, color: "#000000" }}>
-            We are a next-gen tech company revolutionizing software testing with AI-driven intelligence. Our smart solutions accelerate time-to-market, enhance reliability, and optimize costs, ensuring superior digital experiences and a competitive edge.
+          We are a next-gen tech company revolutionizing software testing with
+          AI-driven intelligence.<br></br> Our smart solutions accelerate
+          time-to-market, enhance reliability, and optimize costs, ensuring
+          superior digital experiences and a competitive edge.
         </Typography>
-      </Box> 
+      </Box>
 
-            {/* Key Offerings */}
-      <Grid container spacing={4} sx={{ mt: 6, px: { xs: 2, md: 6 }, justifyContent: "center", marginBottom:"60px" }}>
+      {/* Key Offerings */}
+      <Grid
+        container
+        spacing={4}
+        sx={{
+          mt: 6,
+          px: { xs: 2, md: 6 },
+          justifyContent: "center",
+          marginBottom: "60px",
+        }}
+      >
         {[
-          { title: "AI-Powered Software Quality", description: "Auto-generate, optimize, and execute test cases with precision." },
-          { title: "Tailored Solutions", description: "Innovative products and enablers to address specific quality challanges." },
-          { title: "SDET Engineering", description: "Software services encompassing Performance Engineering, Automation, SRE, DevOps, and all aspects of non-functional testing" },
+          { title: "AI-Powered Software Quality" },
+          { title: "Tailored Solutions" },
+          { title: "SDET Engineering" },
         ].map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card
@@ -79,11 +103,11 @@ const WhatWeDo = () => {
                 boxShadow: "0px 4px 10px rgb(159, 210, 228)", // Blue shadow
                 borderRadius: "12px",
                 transition: "transform 0.3s",
-                minHeight: "30px",
+                minHeight: "50px", // Ensures enough height for proper centering
                 display: "flex",
-                alignItems: "center", 
-                justifyContent: "center", 
-                ":hover": { transform: "scale(1.05)" }
+                alignItems: "center",
+                justifyContent: "center",
+                ":hover": { transform: "scale(1.05)" },
               }}
             >
               <CardContent
@@ -91,117 +115,114 @@ const WhatWeDo = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: "100%", // Ensure full width
+                  height: "100%", // Full height for vertical centering
+                  width: "100%", // Full width for alignment
                   textAlign: "center",
                 }}
               >
-                <Typography variant="h6" fontWeight="bold" gutterBottom>
+                <Typography variant="h6" fontWeight="bold">
                   {item.title}
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
-
         ))}
       </Grid>
 
-      
-
       {sections.map(({ id, title, desc, details, img }, index) => (
         <Box key={id} id={id}>
-          
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: {
-              xs: "column",
-              md: index % 2 === 0 ? "row" : "row-reverse",
-            },
-            alignItems: "center",
-            justifyContent: "center",
-            padding: { xs: "30px 20px", md: "25px 0" },
-            width: "90vw", // Ensure full width
-          }}
-        >
-          {/* Text Section */}
           <Box
             sx={{
-              flex: 1,
-              maxWidth: "600px",
-              padding: { xs: "20px", md: "40px" },
-              textAlign: { xs: "center", md: "left" },
-            }}
-          >
-            <Typography
-              variant="h4"
-              sx={{ fontWeight: "bold", color: "#1976D2" }}
-            >
-              {title}
-            </Typography>
-            <Typography sx={{ marginTop: "10px", color: "#000000" }}>
-              {desc}
-            </Typography>
-
-            <Grid 
-            container 
-            spacing={2} 
-            sx={{ py: { xs: 3, md: 5 }, justifyContent: "center",  }} 
-            direction="column"
-          
-          >
-            {details.map((item, itemIndex) => (
-              <Grid item xs={12} sm={12} md={12} key={`${index}-${itemIndex}`}>
-                <Card
-                  sx={{
-                    boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)", 
-                    border: "1px solid #1565c0",
-                    borderRadius: "10px",
-                    transition: "transform 0.3s",
-                    ":hover": { transform: "scale(1.05)" },
-                    textAlign: "center",
-                    color: "black",
-                    fontWeight:"normal",
-                  }}
-                >
-                  <CardContent>
-                    <Typography variant="body1" fontWeight={530}>
-                      {item}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-  ))}
-</Grid>
-
-            
-          </Box> 
-
-          {/* Image Section */}
-         <Box
-            sx={{
-              flex: 1,
               display: "flex",
+              flexDirection: {
+                xs: "column",
+                md: index % 2 === 0 ? "row" : "row-reverse",
+              },
+              alignItems: "center",
               justifyContent: "center",
+              padding: { xs: "30px 20px", md: "25px 0" },
+              width: "100%", // Ensure full width
             }}
           >
-            <img
-              src={img}
-              alt={title}
-              style={{
-                width: "100%",
-                maxWidth: "550px",
-                height: "auto",
-                borderRadius: "10px",
-                paddingLeft: "30px",
-                // boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+            {/* Text Section */}
+            <Box
+              sx={{
+                flex: 1,
+                maxWidth: "700px",
+                padding: { xs: "20px", md: "40px" },
+                textAlign: { xs: "center", md: "left" },
+                paddingLeft: { xs: "25px", md: "50px" },
               }}
-            />
+            >
+              <Typography
+                variant="h5"
+                sx={{ fontWeight: "bold", color: "#1976D2" }}
+              >
+                {title}
+              </Typography>
+              <Typography sx={{ marginTop: "15px", color: "#000000" }}>
+                {desc}
+              </Typography>
+
+              <Grid
+                container
+                spacing={2}
+                sx={{ py: { xs: 3, md: 5 }, justifyContent: "center" }}
+                direction="column"
+              >
+                {details.map((item, itemIndex) => (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={12}
+                    md={12}
+                    key={`${index}-${itemIndex}`}
+                  >
+                    <Card
+                      sx={{
+                        boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)",
+                        border: "1px solid #1565c0",
+                        borderRadius: "10px",
+                        transition: "transform 0.3s",
+                        ":hover": { transform: "scale(1.05)" },
+                        textAlign: "center",
+                        color: "black",
+                        fontWeight: "normal",
+                      }}
+                    >
+                      <CardContent>
+                        <Typography variant="body1" fontWeight={530}>
+                          {item}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+
+            {/* Image Section */}
+            <Box
+              sx={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <img
+                src={img}
+                alt={title}
+                style={{
+                  width: "100%",
+                  maxWidth: "550px",
+                  height: "auto",
+                  borderRadius: "10px",
+                  paddingLeft: "30px",
+                  // boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                }}
+              />
+            </Box>
           </Box>
-        </Box> 
-
-        
-
-
         </Box>
       ))}
     </Box>

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Link} from "react-router-dom";
 import {
   Box,
@@ -14,8 +14,15 @@ import WhoWeAre from "./WhoWeAre";
 import CaseStudy from "./CaseStudy";
 import backgroundIMG from "../assets/HomeBackground.png"
 import LaunchIMG from "../assets/LaunchIMG.png"
+import banner from "../assets/main.png"
 
 const Home = () => {
+
+  useEffect(() => {
+      window.scrollTo(0, 0); // Scroll to top when component mounts
+    }, []);
+
+
   return (
     <Box
       sx={{ width: "100%", minHeight: "100vh"}}
@@ -34,7 +41,7 @@ const Home = () => {
   }}
 > */}
 
-<Box
+{/* <Box
   sx={{
     background: "linear-gradient(to bottom, #1976D2 5%, #ffffff 5%)",
     display: "flex",
@@ -43,10 +50,10 @@ const Home = () => {
     justifyContent: "center",
     padding: { xs: "30px 20px", md: "50px 0" },
     width: "auto",
-  }}
->
+  }} 
+>*/}
   {/* Text Section - Takes 2x space */}
-  <Box
+  {/* <Box
     sx={{
       flex: 5, // Increased flex ratio
       maxWidth: "1000px", // Slightly increased max-width
@@ -75,10 +82,10 @@ const Home = () => {
     >
       Get Started
     </Button>
-  </Box>
+  </Box> */}
 
   {/* Image Section - Takes 1x space */}
-  <Box
+  {/* <Box
     sx={{
       flex: 2, // Reduced flex ratio
       display: "flex",
@@ -96,7 +103,28 @@ const Home = () => {
       }}
     />
   </Box>
-</Box>
+</Box> */}
+
+<Box
+    sx={{
+      display: "flex",
+      justifyContent: "center",
+      paddingTop: 10
+    }}
+  >
+    <img
+      src={banner}
+      alt={"Launch Image"}
+      style={{
+        width: "100%", // Reduced size
+        height: "auto",
+        borderRadius: "10px",
+      }}
+    />
+  </Box>
+
+
+<Box></Box>
 
   {/* <Typography variant="h3" fontWeight="bold">
     Waynautic Technologies

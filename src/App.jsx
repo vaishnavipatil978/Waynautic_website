@@ -7,6 +7,10 @@ import CaseStudy from "./pages/CaseStudy";
 import Careers from "./pages/Careers";
 import ContactUs from "./pages/ContactUs";
 import Home from "./pages/Home";
+import CaseStudies from "./pages/CaseStudies";
+import AutoAnalysis from "./pages/AutoAnalysis";
+import MobileAppProfiling from "./pages/MobileAppProfiling";
+import CustomeSolution from "./pages/CustomeSolution"
 
 function App() {
   return (
@@ -25,6 +29,11 @@ function App() {
           <Route path="/CaseStudy" element={<CaseStudy />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/case-study/:id" element={<CaseStudies />} />
+          <Route path="/case-study/autoanalysis" element={<AutoAnalysis />} />
+          <Route path="/case-study/mobileappprofiling" element={<MobileAppProfiling />} />
+          <Route path="/case-study/customesolution" element={<CustomeSolution />} />
+
         </Routes>
         <Footer/>
       </Router>

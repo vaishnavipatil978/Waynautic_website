@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Container, Box, Typography, Grid, Card, CardContent, Avatar, Divider } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import InsightsIcon from "@mui/icons-material/Insights";
@@ -20,6 +20,12 @@ const domains = [
 ];
 
 const WhoWeAre = () => {
+
+  useEffect(() => {
+      window.scrollTo(0, 0); // Scroll to top when component mounts
+    }, []);
+
+
   return (
     <Box id="WhoWeAre" 
       sx={{
@@ -54,7 +60,7 @@ const WhoWeAre = () => {
           Who We Are
         </Typography>
         <Typography padding={5} color="#000000" >
-        At Waynautic Technologies, our mission is to deliver AI-powered software solutions that streamline testing, optimize performance, and enhance software quality. We help businesses navigate complex technological challenges with precision, efficiency, and innovation.
+        At Waynautic Technologies, our mission is to deliver AI-powered software solutions that streamline testing, optimize performance, and <br></br>enhance software quality. We help businesses navigate complex technological challenges with precision, efficiency, and innovation.
         </Typography>
       </Box>   
 
@@ -105,7 +111,7 @@ const WhoWeAre = () => {
 
       </Container>*/}
 
-    <Box sx={{ width: "100vw", minHeight: "100vh", background: "white" }}>
+    <Box sx={{ width: "auto", minHeight: "auto", background: "white" }}>
           <Box
             sx={{
               textAlign: "center",

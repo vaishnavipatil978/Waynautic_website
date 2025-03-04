@@ -9,5 +9,6 @@ Currently, two official plugins are available:
 
 
 npm install react-slick slick-carousel
+npm install @emailjs/browser
 
 "# Waynautic_website" 

@@ -13,12 +13,17 @@ import {
 } from "@mui/material";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import blogImage from "../assets/blog.jpg";
-import QAImage from "../assets/QA.jpg";
-import CSImage from "../assets/caseStudy.jpg";
+import MobileAppProfiling from "../assets/MobileAppProfiling.jpg";
+import CustomeSolutionIMG from "../assets/CustomeSolutionIMG.jpg";
+import AutoAnalysis from "../assets/AutoAnalysis.jpg";
 import Divider from "@mui/material/Divider";
+import backgroundImage from "../assets/WhoWeAre.png"; // Replace with actual path
 
 const CaseStudy = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scroll to top when component mounts
+  }, []);
+
   const sliderSettings = {
     dots: true,
     infinite: true,
@@ -40,67 +45,62 @@ const CaseStudy = () => {
       path: "/case-studies",
       items: [
         {
-          title: "E-Commerce Growth",
-          description: "Scaling an online store to millions.",
-          image: CSImage,
-          link: "/case-studies/ecommerce",
+          title:
+            "Automating Performance Test Analysis with Blazemeter Auto-Analysis Tool",
+          image: AutoAnalysis,
+          link: "/case-study/autoanalysis",
         },
         {
-          title: "Banking Security",
-          description: "How banks fight cyber threats.",
-          image: CSImage,
-          link: "/case-studies/banking",
+          title: "Mobile App Performance Profiling and Optimization",
+          image: MobileAppProfiling,
+          link: "/case-study/mobileappprofiling",
         },
         {
-          title: "Mobile App Profiling",
-          description: "Scaling an online store to millions.",
-          image: CSImage,
-          link: "/case-studies/ecommerce",
-        },
-        {
-          title: "Frames per second",
-          description: "How banks fight cyber threats.",
-          image: CSImage,
-          link: "/case-studies/banking",
+          title: "Performance Testing Using Custom Selenium JMeter Integration",
+          image: CustomeSolutionIMG,
+          link: "/case-study/customesolution",
         },
       ],
     },
   ];
 
   return (
-    <Box id="CaseStudy">
+    <Box id="CaseStudy" paddingTop={10}>
       {/* Keep the rest of the KnowledgeBase page unchanged */}
       {sectionDetails.map((section, index) => (
         <Box>
+          <Divider
+            sx={{
+              width: "80px",
+              mx: "auto",
+              backgroundColor: "#1976D2",
+            }}
+          />
           <Box
             sx={{
+              minHeight: "260px",
+              backgroundImage: `url(${backgroundImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
               textAlign: "center",
-              maxWidth: "800px",
               mx: "auto",
-              mt: 6,
               px: 3,
               // background: "#1976D2",
               padding: "30px 15px",
               borderRadius: "12px",
             }}
           >
-            <Divider
-              sx={{
-                width: "80px",
-                mx: "auto",
-                my: 2,
-                backgroundColor: "#1976D2",
-              }}
-            />
             <Typography variant="h4" fontWeight="bold" color="#1565c0">
               Case Studies
             </Typography>
             <Typography variant="body1" sx={{ mt: 2, color: "#000000" }}>
               Explore our Case Studies to see how Waynautic Technologies
-              delivers innovative solutions in Performance Engineering,
+              delivers innovative solutions in Performance Engineering,<br></br>
               Automation, DevOps, AI/ML Testing, and more. Discover real-world
               success stories showcasing our expertise in optimizing
-              performance, enhancing reliability, and driving business growth.
+              performance,<br></br> enhancing reliability, and driving business
+              growth.
             </Typography>
           </Box>
 
@@ -118,25 +118,60 @@ const CaseStudy = () => {
 
             <Slider {...sliderSettings}>
               {section.items.map((item, idx) => (
-                <Box key={idx} sx={{ padding: "20px" }}>
+                // <CardContent
+                //   sx={{
+                //     display: "flex",
+                //     flexDirection: "column",
+                //     alignItems: "center",
+                //   }}
+                // >
+                //   <Typography
+                //     variant="h6"
+                //     sx={{
+                //       fontWeight: "bold",
+                //       color: "#333",
+                //       textAlign: "center",
+                //     }}
+                //   >
+                //     {item.title}
+                //   </Typography>
+
+                //   <Button
+                //     component={Link}
+                //     to={item.link}
+                //     variant="contained"
+                //     color="primary"
+                //     sx={{ marginTop: 2 }}
+                //   >
+                //     Read More
+                //   </Button>
+                // </CardContent>
+
+                <Box
+                  key={idx}
+                  sx={{
+                    padding: "20px",
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
                   <Card
                     component={Link}
                     to={item.link}
                     sx={{
-                      // background:
-                      //   "linear-gradient(135deg,rgb(255, 255, 255), #f9f9f9)",
                       textDecoration: "none",
                       color: "#000",
-                      // borderRadius: "15px",
-                      // boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)", // Improved shadow around the card
                       transition:
                         "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
                       margin: "0px",
                       overflow: "hidden",
-                      // border: "2px solid transparent",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      borderRadius: "15px",
                       "&:hover": {
-                        transform: "translateY(-10px) scale(1.05)", // Moves card up slightly
-                        boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)", // Stronger and surrounding shadow
+                        transform: "translateY(-10px) scale(1.05)",
+                        boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.3)",
                       },
                     }}
                   >
@@ -148,32 +183,62 @@ const CaseStudy = () => {
                         height: "150px",
                         width: "auto",
                         maxWidth: "100%",
-                        objectFit: "contain",
+                        objectFit: "cover",
                         display: "block",
                         margin: "0 auto",
+                        paddingTop: "15px",
+                        borderRadius: "2px",
                       }}
                     />
-                    <CardContent sx={{}}>
-                      <Typography
-                        variant="h6"
+                    <CardContent
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                        flexGrow: 1,
+                        textAlign: "center",
+                        minHeight: "200px", // Ensures equal height for all cards
+                      }}
+                    >
+                      <Box>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontWeight: "bold",
+                            color: "#333",
+                            textAlign: "center",
+                          }}
+                        >
+                          {item.title}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: "#555",
+                            textAlign: "center",
+                            paddingTop: "10px",
+                          }}
+                        >
+                          {item.description}
+                        </Typography>
+                      </Box>
+                      <Box
                         sx={{
-                          fontWeight: "bold",
-                          color: "#333",
-                          textAlign: "center",
+                          display: "flex",
+                          justifyContent: "center",
+                          marginTop: "auto",
                         }}
                       >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "#555",
-                          textAlign: "center",
-                          paddingTop: "10px",
-                        }}
-                      >
-                        {item.description}
-                      </Typography>
+                        <Button
+                          component={Link}
+                          to={item.link}
+                          variant="contained"
+                          color="primary"
+                          sx={{ marginTop: 2, ":hover": { color: "white" } }}
+                        >
+                          Read More
+                        </Button>
+                      </Box>
                     </CardContent>
                   </Card>
                 </Box>
