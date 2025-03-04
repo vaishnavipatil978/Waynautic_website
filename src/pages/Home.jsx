@@ -1,4 +1,5 @@
 import React from "react";
+import { Link} from "react-router-dom";
 import {
   Box,
   Typography,
@@ -35,12 +36,13 @@ const Home = () => {
 
 <Box
   sx={{
+    background: "linear-gradient(to bottom, #1976D2 5%, #ffffff 5%)",
     display: "flex",
     flexDirection: { xs: "column", md: "row" },
     alignItems: "center",
     justifyContent: "center",
     padding: { xs: "30px 20px", md: "50px 0" },
-    width: "90vw",
+    width: "auto",
   }}
 >
   {/* Text Section - Takes 2x space */}
@@ -60,6 +62,7 @@ const Home = () => {
     </Typography>
     <Button
       variant="contained"
+      component={Link} to="/contact-us"
       sx={{
         mt: 3,
         background: "linear-gradient(45deg, #1976D2, #0A74DA)",
@@ -67,6 +70,7 @@ const Home = () => {
         fontSize: "16px",
         padding: "10px 20px",
         borderRadius: "25px",
+        ":hover": { color: "#fff", background: "linear-gradient(45deg,rgb(19, 77, 136), #0A74DA)"},
       }}
     >
       Get Started

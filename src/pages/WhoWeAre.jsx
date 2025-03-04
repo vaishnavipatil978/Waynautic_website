@@ -8,7 +8,7 @@ import missionImage from "../assets/mission.jpg"; // Replace with actual path
 import lifeAtWaynauticImage from "../assets/team.jpg"; // Replace with actual path
 import backgroundImage from "../assets/WhoWeAre.png"; // Replace with actual path
 import { Business, ShoppingCart, LocalHospital, PrecisionManufacturing, PhoneIphone, SportsEsports } from "@mui/icons-material";
-
+import clientIMG from "../assets/clients.png"; // Replace
 
 const domains = [
   { title: "Banking, Financial Services, and Insurance (BFSI)", icon: <Business fontSize="large" /> },
@@ -29,6 +29,8 @@ const WhoWeAre = () => {
       }}
     >
       {/* Hero Section with Background Image */}
+      <span><Divider sx={{ width: "160px", mx: "auto", backgroundColor: "#1976D2", color:"#FFFFFF" }} /></span>
+      
       <Box
         sx={{
           minHeight: "260px",
@@ -47,7 +49,8 @@ const WhoWeAre = () => {
       >
 
       <Box textAlign="center" mt={6} >
-        <Typography variant="h3" fontWeight={700} color="#1565c0">
+        
+        <Typography variant="h4" fontWeight={700} color="#1565c0">
           Who We Are
         </Typography>
         <Typography padding={5} color="#000000" >
@@ -114,15 +117,15 @@ const WhoWeAre = () => {
               borderRadius: "12px",
             }}
           >
-            <Typography variant="h4" fontWeight="bold" color="#1976D2">
+            <Typography variant="h5" fontWeight="bold" color="#1565c0">
               Serving Clients Across Domains
             </Typography>
-            <Typography variant="body1" sx={{ mt: 2, color: "#555" }}>
+            <Typography variant="body1" sx={{ mt: 2, color: "black" }}>
               We provide AI-driven testing solutions across multiple industries.
             </Typography>
           </Box>
 
-          <Grid container spacing={2} sx={{ px: { xs: 2, md: 6 }, justifyContent: "center", mt: 4 }}>
+          {/* <Grid container spacing={2} sx={{ px: { xs: 2, md: 6 }, justifyContent: "center", mt: 4 }}>
             {domains.map(({ title, icon }, index) => (
               <Grid item xs={12} sm={6} md={4} key={index}>
                 <Card
@@ -144,7 +147,28 @@ const WhoWeAre = () => {
                 </Card>
               </Grid>
             ))}
-          </Grid>
+          </Grid> */}
+
+          <Box
+            sx={{
+                flex: 1,
+                display: "flex",
+                justifyContent: "center",
+                marginTop: 4
+             }}
+            >
+             <img
+                src={clientIMG}
+                alt={clientIMG}
+                style={{
+                  width: "100%",
+                  maxWidth: "1100px",
+                  height: "auto",
+                  borderRadius: "10px",
+                    // boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                  }}
+                  />
+            </Box> 
         </Box>
 
     </Box>

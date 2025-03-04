@@ -13,7 +13,7 @@ const sections = [
   {
     id: "services",
     title: "Our Services",
-    desc: "We offer a comprehensive suite of QA services.",
+    desc: "We offer a comprehensive suite of QA services.Waynautic Technologies offers expert solutions in Performance Engineering, SRE, AI/ML Testing, Automation, DevOps, Security Compliance, Functional Assurance, and Network Profiling to optimize performance and ensure reliability.",
     details: servicesList,
     img: servicesImg,
   },
@@ -67,26 +67,41 @@ const WhatWeDo = () => {
       </Box> 
 
             {/* Key Offerings */}
-      <Grid container spacing={4} sx={{ mt: 6, px: { xs: 2, md: 6 }, justifyContent: "center" }}>
+      <Grid container spacing={4} sx={{ mt: 6, px: { xs: 2, md: 6 }, justifyContent: "center", marginBottom:"60px" }}>
         {[
           { title: "AI-Powered Software Quality", description: "Auto-generate, optimize, and execute test cases with precision." },
           { title: "Tailored Solutions", description: "Innovative products and enablers to address specific quality challanges." },
           { title: "SDET Engineering", description: "Software services encompassing Performance Engineering, Automation, SRE, DevOps, and all aspects of non-functional testing" },
         ].map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card sx={{ boxShadow: "0px 4px 10px rgb(159, 210, 228)", // Blue shadow
-    borderRadius: "12px", transition: "transform 0.3s", minHeight:"150px" ,":hover": { transform: "scale(1.05)" } }}>
-              <CardContent>
-                
+            <Card
+              sx={{
+                boxShadow: "0px 4px 10px rgb(159, 210, 228)", // Blue shadow
+                borderRadius: "12px",
+                transition: "transform 0.3s",
+                minHeight: "30px",
+                display: "flex",
+                alignItems: "center", 
+                justifyContent: "center", 
+                ":hover": { transform: "scale(1.05)" }
+              }}
+            >
+              <CardContent
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "100%", // Ensure full width
+                  textAlign: "center",
+                }}
+              >
                 <Typography variant="h6" fontWeight="bold" gutterBottom>
                   {item.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {item.description}
                 </Typography>
               </CardContent>
             </Card>
           </Grid>
+
         ))}
       </Grid>
 
@@ -104,7 +119,7 @@ const WhatWeDo = () => {
             },
             alignItems: "center",
             justifyContent: "center",
-            padding: { xs: "30px 20px", md: "50px 0" },
+            padding: { xs: "30px 20px", md: "25px 0" },
             width: "90vw", // Ensure full width
           }}
         >
@@ -126,6 +141,38 @@ const WhatWeDo = () => {
             <Typography sx={{ marginTop: "10px", color: "#000000" }}>
               {desc}
             </Typography>
+
+            <Grid 
+            container 
+            spacing={2} 
+            sx={{ py: { xs: 3, md: 5 }, justifyContent: "center",  }} 
+            direction="column"
+          
+          >
+            {details.map((item, itemIndex) => (
+              <Grid item xs={12} sm={12} md={12} key={`${index}-${itemIndex}`}>
+                <Card
+                  sx={{
+                    boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)", 
+                    border: "1px solid #1565c0",
+                    borderRadius: "10px",
+                    transition: "transform 0.3s",
+                    ":hover": { transform: "scale(1.05)" },
+                    textAlign: "center",
+                    color: "black",
+                    fontWeight:"normal",
+                  }}
+                >
+                  <CardContent>
+                    <Typography variant="body1" fontWeight={530}>
+                      {item}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+  ))}
+</Grid>
+
             
           </Box> 
 
@@ -142,37 +189,17 @@ const WhatWeDo = () => {
               alt={title}
               style={{
                 width: "100%",
-                maxWidth: "600px",
+                maxWidth: "550px",
                 height: "auto",
                 borderRadius: "10px",
+                paddingLeft: "30px",
                 // boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
               }}
             />
           </Box>
         </Box> 
 
-        <Grid container spacing={2} sx={{ px: { xs: 2, md: 6 }, justifyContent: "center" }}>
-            {details.map((item, itemIndex) => (
-              <Grid item xs={12} sm={6} md={4} key={`${index}-${itemIndex}`}>
-                <Card
-                  sx={{
-                    boxShadow: 2,
-                    borderRadius: "10px",
-                    transition: "transform 0.3s",
-                    ":hover": { transform: "scale(1.05)" },
-                    textAlign: "center",
-                    // padding: "10px",
-                  }}
-                >
-                  <CardContent>
-                    <Typography variant="body1" fontWeight="bold">
-                      {item}
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-        </Grid> 
+        
 
 
         </Box>
