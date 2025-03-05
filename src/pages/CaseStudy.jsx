@@ -69,13 +69,13 @@ const CaseStudy = () => {
       {/* Keep the rest of the KnowledgeBase page unchanged */}
       {sectionDetails.map((section, index) => (
         <Box>
-          <Divider
+          {/* <Divider
             sx={{
               width: "80px",
               mx: "auto",
               backgroundColor: "#1976D2",
             }}
-          />
+          /> */}
           <Box
             sx={{
               minHeight: "260px",

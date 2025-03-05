@@ -35,7 +35,7 @@ const WhoWeAre = () => {
       }}
     >
       {/* Hero Section with Background Image */}
-      <span><Divider sx={{ width: "160px", mx: "auto", backgroundColor: "#1976D2", color:"#FFFFFF" }} /></span>
+      {/* <span><Divider sx={{ width: "160px", mx: "auto", backgroundColor: "#1976D2", color:"#FFFFFF" }} /></span> */}
       
       <Box
         sx={{

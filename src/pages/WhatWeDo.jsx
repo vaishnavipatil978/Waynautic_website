@@ -1,12 +1,22 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { Box, Typography, Grid, Card, CardContent } from "@mui/material";
 import servicesImg from "../assets/ourServices.png";
 import productsImg from "../assets/products.jpg";
 import enablersImg from "../assets/enablers.jpg";
 import Divider from "@mui/material/Divider";
 import backgroundImage from "../assets/WhoWeAre.png"; // Replace with actual path
+import { Engineering, Settings, AutoAwesome } from "@mui/icons-material";
 
 const servicesList = [];
+
+const cardData = [
+  {
+    title: "AI-Powered Software Quality",
+    icon: <AutoAwesome fontSize="large" />,
+  },
+  { title: "Tailored Solutions", icon: <Settings fontSize="large" /> },
+  { title: "SDET Engineering", icon: <Engineering fontSize="large" /> },
+];
 
 const sections = [
   {
@@ -40,11 +50,9 @@ const sections = [
 ];
 
 const WhatWeDo = () => {
-
   useEffect(() => {
-      window.scrollTo(0, 0); // Scroll to top when component mounts
-    }, []);
-
+    window.scrollTo(0, 0); // Scroll to top when component mounts
+  }, []);
 
   return (
     <Box
@@ -67,9 +75,9 @@ const WhatWeDo = () => {
           borderRadius: "12px",
         }}
       >
-        <Divider
+        {/* <Divider
           sx={{ width: "80px", mx: "auto", my: 2, backgroundColor: "#1976D2" }}
-        />
+        /> */}
         <Typography variant="h4" fontWeight="bold" color="#1565c0">
           What We Do
         </Typography>
@@ -80,9 +88,8 @@ const WhatWeDo = () => {
           superior digital experiences and a competitive edge.
         </Typography>
       </Box>
-
       {/* Key Offerings */}
-      <Grid
+      {/* <Grid
         container
         spacing={4}
         sx={{
@@ -127,8 +134,53 @@ const WhatWeDo = () => {
             </Card>
           </Grid>
         ))}
-      </Grid>
-
+      </Grid> */}
+      <Grid
+  container
+  spacing={4}
+  sx={{
+    mt: 6,
+    px: { xs: 2, md: 6 },
+    justifyContent: "center",
+    marginBottom: "60px",
+  }}
+>
+  {cardData.map((item, index) => (
+    <Grid item xs={12} sm={6} md={4} key={index}>
+      <Card
+        sx={{
+          boxShadow: "0px 4px 10px rgb(159, 210, 228)", // Blue shadow
+          borderRadius: "12px",
+          transition: "transform 0.3s",
+          minHeight: "80px", // Ensure enough height
+          display: "flex",
+          alignItems: "center",
+          padding: "16px",
+          ":hover": { transform: "scale(1.05)" },
+        }}
+      >
+        <Box
+          sx={{
+            color: "primary.main",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minWidth: "50px", // Space for icon
+            marginRight: "12px", // Space between icon and text
+          }}
+        >
+          {item.icon}
+        </Box>
+        <CardContent sx={{ padding: "0 !important" }}> {/* Remove extra padding */}
+          <Typography variant="h6" fontWeight="bold">
+            {item.title}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Grid>
+  ))}
+</Grid>;
+      
       {sections.map(({ id, title, desc, details, img }, index) => (
         <Box key={id} id={id}>
           <Box
