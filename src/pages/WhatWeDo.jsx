@@ -23,17 +23,23 @@ const sections = [
     id: "services",
     title: "Our Services",
     desc: "We provide end-to-end QA solutions, combining expertise, automation, and AI-driven insights to ensure flawless performance and quality.",
-    details: [{
-      title: "Managed Services",
-      description: "Expertly managed QA solutions to ensure seamless performance and consistent quality across all your projects.",
-    },{
-      title: "Tailored Solutions",
-      description: "Custom QA strategies designed to meet your unique business needs and drive efficiency.",
-    },{
-      title: "Intelligent AI",
-      description: "Leveraging advanced AI technologies to enhance testing accuracy, speed, and automation.",
-    },
-  ],
+    details: [
+      {
+        title: "Managed Services",
+        description:
+          "Expertly managed QA solutions to ensure seamless performance and consistent quality across all your projects.",
+      },
+      {
+        title: "Tailored Solutions",
+        description:
+          "Custom QA strategies designed to meet your unique business needs and drive efficiency.",
+      },
+      {
+        title: "Intelligent AI",
+        description:
+          "Leveraging advanced AI technologies to enhance testing accuracy, speed, and automation.",
+      },
+    ],
     List: [],
     img: servicesImg,
   },
@@ -214,7 +220,7 @@ const WhatWeDo = () => {
 
               {/* Text */}
               <CardContent sx={{ padding: "0 !important", flex: 1 }}>
-                <Typography variant="h6" fontWeight="bold">
+                <Typography variant="h7" fontWeight="bold">
                   {item.title}
                 </Typography>
               </CardContent>
