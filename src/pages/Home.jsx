@@ -257,15 +257,16 @@ const Home = () => {
                 width: "70%",
                 height: "1px", // Thickness of underline
                 background: "linear-gradient(to right, white, green)", // Gradient effect
-                boxShadow: "0 0 5px white, 0 0 10px green", 
+                boxShadow: "0 0 5px white, 0 0 10px green",
                 borderRadius: "2px",
               }}
             />
           </Typography>
 
           <Typography variant="h6" color="rgb(197, 218, 247)" mt={3}>
-            Empowering a smarter, scalable, and resilient future with AI-driven
-            software solutions.<br></br> With{" "}
+            Empowering a smarter, scalable, and resilient future with AI-driven{" "}
+            <br></br>
+            software solutions. With{" "}
             <span
               style={{
                 color: "lightgreen", // Correct CSS color name
@@ -281,7 +282,7 @@ const Home = () => {
             >
               Comprehensive coverage
             </span>
-            , and{" "}
+            , and <br></br>
             <span
               style={{
                 color: "lightgreen", // Correct CSS color name
@@ -289,7 +290,7 @@ const Home = () => {
             >
               Accelerated release cycles
             </span>
-            , <br></br>we deliver cutting-edge software and quality assurance
+            , we deliver cutting-edge software and quality <br></br> assurance
             services to drive innovation and efficiency.
           </Typography>
         </Box>
