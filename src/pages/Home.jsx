@@ -242,7 +242,7 @@ const Home = () => {
             fontWeight="bold"
             color="#ffffff"
             sx={{
-              textShadow: "0 0 1px #ffffff, 0 0 2px #42A5F5, 0 0 5px #42A5F5",
+              // textShadow: "0 0 1px #ffffff, 0 0 2px #42A5F5, 0 0 5px #42A5F5",
               position: "relative", // Needed for the underline
               display: "inline-block",
             }}
@@ -257,7 +257,7 @@ const Home = () => {
                 width: "70%",
                 height: "1px", // Thickness of underline
                 background: "linear-gradient(to right, white, green)", // Gradient effect
-                boxShadow: "0 0 5px white, 0 0 10px green", // Glow effect
+                boxShadow: "0 0 5px white, 0 0 10px green", 
                 borderRadius: "2px",
               }}
             />
@@ -271,7 +271,7 @@ const Home = () => {
                 color: "lightgreen", // Correct CSS color name
               }}
             >
-              intelligent AI
+              Intelligent AI
             </span>
             ,{" "}
             <span
@@ -279,7 +279,7 @@ const Home = () => {
                 color: "lightgreen", // Correct CSS color name
               }}
             >
-              comprehensive coverage
+              Comprehensive coverage
             </span>
             , and{" "}
             <span
@@ -287,7 +287,7 @@ const Home = () => {
                 color: "lightgreen", // Correct CSS color name
               }}
             >
-              accelerated release cycles
+              Accelerated release cycles
             </span>
             , <br></br>we deliver cutting-edge software and quality assurance
             services to drive innovation and efficiency.

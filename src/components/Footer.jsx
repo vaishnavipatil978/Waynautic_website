@@ -77,7 +77,7 @@ const Footer = () => {
         {navLinks.map((item, index) => (
           <Link
             key={index}
-            href={item.link}
+            to={item.link}
             onClick={(e) => handleNavigation(e, item)}
             sx={{
               color: "#FFFFFF",

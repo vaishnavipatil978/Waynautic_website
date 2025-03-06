@@ -22,7 +22,7 @@ const sections = [
   {
     id: "services",
     title: "Our Services",
-    desc: "We offer a comprehensive suite of QA services.",
+    desc: "We provide end-to-end QA solutions, combining expertise, automation, and AI-driven insights to ensure flawless performance and quality.",
     details: [{
       title: "Managed Services",
       description: "Expertly managed QA solutions to ensure seamless performance and consistent quality across all your projects.",
@@ -244,7 +244,7 @@ const WhatWeDo = () => {
                 flex: 1,
                 maxWidth: "700px",
                 padding: { xs: "20px", md: "40px" },
-                textAlign: { xs: "center", md: "left" },
+                textAlign: { xs: "center", md: "center" },
                 paddingLeft: { xs: "25px", md: "50px" },
               }}
             >
