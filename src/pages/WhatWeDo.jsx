@@ -23,7 +23,8 @@ const sections = [
     id: "services",
     title: "Our Services",
     desc: "We offer a comprehensive suite of QA services.Waynautic Technologies offers expert solutions in Performance Engineering, SRE, AI/ML Testing, Automation, DevOps, Security Compliance, Functional Assurance, and Network Profiling to optimize performance and ensure reliability.",
-    details: servicesList,
+    details: [],
+    List: ["Manage Services", "Tailored Solutions", "Intelligent AI"],
     img: servicesImg,
   },
   {
@@ -31,9 +32,16 @@ const sections = [
     title: "Our Products",
     desc: "Our industry-leading software products are built for capital markets, addressing critical challenges in testing and optimizing operational efficiency. Our expertise ensures your systems are optimized for reliability, scalability, and peak performance.",
     details: [
-      "QA-Gate - AI-enabled test management and governance suite",
-      "Exgenix - A tailored testing solution for capital markets",
+      {
+        title: "QA-Gate",
+        description: "AI-enabled test management and governance suite",
+      },
+      {
+        title: "Exgenix",
+        description: "A tailored testing solution for capital markets",
+      },
     ],
+    List: [],
     img: productsImg,
   },
   {
@@ -41,10 +49,23 @@ const sections = [
     title: "Our Enablers",
     desc: "We design AI-powered tools and utilities that address critical business challenges, with a strong focus on quality assurance. Our bespoke solutions are tailored to meet each client’s unique requirements, enhancing efficiency and precision.",
     details: [
-      "Automated Test Script Generator – Reduces manual effort by over 85%, streamlining test creation",
-      "AutoPerf Test Analysis Framework – Fully automates the performance testing lifecycle (PTLC), eliminating manual intervention.",
-      "Custom Automation Frameworks – Designed for end-to-end functional testing, ensuring comprehensive coverage and reliability.",
+      {
+        title: "Automated Test Script Generator",
+        description:
+          "Reduces manual effort by over 85%, streamlining test creation",
+      },
+      {
+        title: "AutoPerf Test Analysis Framework",
+        description:
+          "Fully automates the performance testing lifecycle (PTLC), eliminating manual intervention.",
+      },
+      {
+        title: "Custom Automation Frameworks",
+        description:
+          "Designed for end-to-end functional testing, ensuring comprehensive coverage and reliability.",
+      },
     ],
+    List: [],
     img: enablersImg,
   },
 ];
@@ -57,7 +78,12 @@ const WhatWeDo = () => {
   return (
     <Box
       id="WhatWeDo"
-      sx={{ width: "auto", minHeight: "100vh", background: "white", py: 6 }}
+      sx={{
+        width: "auto",
+        minHeight: "100vh",
+        background: "white",
+        paddingTop: 6,
+      }}
     >
       <Box
         sx={{
@@ -68,7 +94,7 @@ const WhatWeDo = () => {
           backgroundRepeat: "no-repeat",
           textAlign: "center",
           mx: "auto",
-          mt: 6,
+          mt: 2,
           px: 3,
           // background: "#1976D2",
           padding: "30px 15px",
@@ -78,14 +104,14 @@ const WhatWeDo = () => {
         {/* <Divider
           sx={{ width: "80px", mx: "auto", my: 2, backgroundColor: "#1976D2" }}
         /> */}
-        <Typography variant="h4" fontWeight="bold" color="#1565c0">
+        <Typography variant="h3" fontWeight="bold" color="#1565c0">
           What We Do
         </Typography>
         <Typography variant="body1" sx={{ mt: 2, color: "#000000" }}>
           We are a next-gen tech company revolutionizing software testing with
           AI-driven intelligence.<br></br> Our smart solutions accelerate
-          time-to-market, enhance reliability, and optimize costs, ensuring
-          superior digital experiences and a competitive edge.
+          time-to-market, enhance reliability, and <br></br> optimize costs,
+          ensuring superior digital experiences and a competitive edge.
         </Typography>
       </Box>
       {/* Key Offerings */}
@@ -136,52 +162,58 @@ const WhatWeDo = () => {
         ))}
       </Grid> */}
       <Grid
-  container
-  spacing={4}
-  sx={{
-    mt: 6,
-    px: { xs: 2, md: 6 },
-    justifyContent: "center",
-    marginBottom: "60px",
-  }}
->
-  {cardData.map((item, index) => (
-    <Grid item xs={12} sm={6} md={4} key={index}>
-      <Card
+        container
+        spacing={4}
         sx={{
-          boxShadow: "0px 4px 10px rgb(159, 210, 228)", // Blue shadow
-          borderRadius: "12px",
-          transition: "transform 0.3s",
-          minHeight: "80px", // Ensure enough height
-          display: "flex",
-          alignItems: "center",
-          padding: "16px",
-          ":hover": { transform: "scale(1.05)" },
+          mt: 6,
+          px: { xs: 2, md: 6 },
+          justifyContent: "center",
+          marginBottom: "30px",
         }}
       >
-        <Box
-          sx={{
-            color: "primary.main",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            minWidth: "50px", // Space for icon
-            marginRight: "12px", // Space between icon and text
-          }}
-        >
-          {item.icon}
-        </Box>
-        <CardContent sx={{ padding: "0 !important" }}> {/* Remove extra padding */}
-          <Typography variant="h6" fontWeight="bold">
-            {item.title}
-          </Typography>
-        </CardContent>
-      </Card>
-    </Grid>
-  ))}
-</Grid>;
-      
-      {sections.map(({ id, title, desc, details, img }, index) => (
+        {cardData.map((item, index) => (
+          <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: "flex" }}>
+            <Card
+              sx={{
+                boxShadow: "0px 4px 10px rgb(159, 210, 228)", // Blue shadow
+                borderRadius: "12px",
+                transition: "transform 0.3s",
+                minHeight: "70px", // Ensure uniform height
+                display: "flex",
+                flexDirection: "row", // Keep icon & text side by side
+                alignItems: "center", // Align items in the center
+                padding: "16px",
+                width: "100%", // Ensure it fills the grid space
+                ":hover": { transform: "scale(1.05)" },
+              }}
+            >
+              {/* Icon Box */}
+              <Box
+                sx={{
+                  color: "primary.main",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  minWidth: "50px", // Ensure space for the icon
+                  marginRight: "12px", // Space between icon and text
+                  fontSize: "2rem", // Adjust icon size if needed
+                }}
+              >
+                {item.icon}
+              </Box>
+
+              {/* Text */}
+              <CardContent sx={{ padding: "0 !important", flex: 1 }}>
+                <Typography variant="h6" fontWeight="bold">
+                  {item.title}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+      ;
+      {sections.map(({ id, title, desc, details, img, List }, index) => (
         <Box key={id} id={id}>
           <Box
             sx={{
@@ -207,15 +239,47 @@ const WhatWeDo = () => {
               }}
             >
               <Typography
-                variant="h5"
+                variant="h4"
                 sx={{ fontWeight: "bold", color: "#1976D2" }}
               >
                 {title}
               </Typography>
+
               <Typography sx={{ marginTop: "15px", color: "#000000" }}>
                 {desc}
               </Typography>
 
+              {/* Show list only for the first section */}
+              {List && List.length > 0 && (
+                <Box sx={{ marginTop: "15px" }}>
+                  <ul
+                    style={{
+                      paddingLeft: "20px",
+                      listStyleType: "disc", // Ensures bullet points
+                      color: "black", // Makes bullet points black
+                    }}
+                  >
+                    {List.map((Listitem, ListitemIndex) => (
+                      <li
+                        key={ListitemIndex}
+                        style={{
+                          marginBottom: "8px",
+                          fontWeight: "bold", // Bold text
+                        }}
+                      >
+                        <Typography
+                          variant="body1"
+                          sx={{ color: "black", fontWeight: "bold" }}
+                        >
+                          {Listitem}
+                        </Typography>
+                      </li>
+                    ))}
+                  </ul>
+                </Box>
+              )}
+
+              {/* Cards for all sections */}
               <Grid
                 container
                 spacing={2}
@@ -223,13 +287,7 @@ const WhatWeDo = () => {
                 direction="column"
               >
                 {details.map((item, itemIndex) => (
-                  <Grid
-                    item
-                    xs={12}
-                    sm={12}
-                    md={12}
-                    key={`${index}-${itemIndex}`}
-                  >
+                  <Grid item xs={12} key={`${index}-${itemIndex}`}>
                     <Card
                       sx={{
                         boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.2)",
@@ -243,8 +301,11 @@ const WhatWeDo = () => {
                       }}
                     >
                       <CardContent>
-                        <Typography variant="body1" fontWeight={530}>
-                          {item}
+                        <Typography variant="body1" fontWeight="Bold">
+                          {item.title}
+                        </Typography>
+                        <Typography variant="body1" fontSize={14}>
+                          {item.description}
                         </Typography>
                       </CardContent>
                     </Card>
@@ -270,7 +331,6 @@ const WhatWeDo = () => {
                   height: "auto",
                   borderRadius: "10px",
                   paddingLeft: "30px",
-                  // boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                 }}
               />
             </Box>

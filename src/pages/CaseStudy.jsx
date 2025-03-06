@@ -86,12 +86,13 @@ const CaseStudy = () => {
               textAlign: "center",
               mx: "auto",
               px: 3,
+              mt:7,
               // background: "#1976D2",
               padding: "30px 15px",
               borderRadius: "12px",
             }}
           >
-            <Typography variant="h4" fontWeight="bold" color="#1565c0">
+            <Typography variant="h3" fontWeight="bold" color="#1565c0">
               Case Studies
             </Typography>
             <Typography variant="body1" sx={{ mt: 2, color: "#000000" }}>
@@ -234,7 +235,7 @@ const CaseStudy = () => {
                           to={item.link}
                           variant="contained"
                           color="primary"
-                          sx={{ marginTop: 2, ":hover": { color: "white" } }}
+                          sx={{ marginTop: "auto", ":hover": { color: "white" } }}
                         >
                           Read More
                         </Button>

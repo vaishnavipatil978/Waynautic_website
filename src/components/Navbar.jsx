@@ -26,16 +26,26 @@ const Navbar = () => {
   };
 
   // Scroll to section, navigating to home first if necessary
+  
   const scrollToSection = (id) => {
     if (location.pathname !== "/") {
       navigate("/");
       setTimeout(() => {
-        scrollToElement(id);
+        if (id === "home") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else {
+          scrollToElement(id);
+        }
       }, 100);
     } else {
-      scrollToElement(id);
+      if (id === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        scrollToElement(id);
+      }
     }
   };
+  
 
   const scrollToElement = (id) => {
     const section = document.getElementById(id);
@@ -47,7 +57,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["WhatWeDo", "WhoWeAre", "CaseStudy"];
+      const sections = ["WhatWeDo", "WhoWeServe", "CaseStudy"];
       let currentSection = "";
 
       sections.forEach((id) => {
@@ -66,6 +76,13 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleClick = () => {
+    // Scroll to top only if already on the home page
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <>
@@ -86,25 +103,26 @@ const Navbar = () => {
           }}
         >
           <Box
-            component={Link}
-            to="/"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              textDecoration: "none",
-            }}
-          >
-            <img
-              src={logo}
-              alt="Waynautic Logo"
-              style={{ height: "45px", width: "auto" }}
-            />
-          </Box>
+      component={Link}
+      to="/"
+      onClick={handleClick} // Call the function on click
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        textDecoration: "none",
+      }}
+    >
+      <img
+        src={logo}
+        alt="Waynautic Logo"
+        style={{ height: "45px", width: "auto" }}
+      />
+    </Box>
 
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}>
             {[
               { label: "What We Do?", id: "WhatWeDo" },
-              { label: "Who Are We?", id: "WhoWeAre" },
+              { label: "Who We Serve?", id: "WhoWeServe" },
               { label: "Case Studies", id: "CaseStudy" },
             ].map((item) => (
               <Button
@@ -185,8 +203,8 @@ const Navbar = () => {
           <List>
             {[
               { label: "What We Do?", id: "WhatWeDo" },
-              { label: "Who Are We?", id: "WhoWeAre" },
-              { label: "Knowledge Base", id: "CaseStudy" },
+              { label: "Who We Serve?", id: "WhoWeServe" },
+              { label: "Case Studies", id: "CaseStudy" },
             ].map((item) => (
               <ListItem key={item.id} disablePadding>
                 <ListItemButton
@@ -199,6 +217,31 @@ const Navbar = () => {
                       activeSection === item.id ? "#E3F2FD" : "transparent",
                     "&:hover": { background: "#E3F2FD" },
                   }}
+                >
+                  <ListItemText
+                    primary={item.label}
+                    sx={{
+                      textAlign: "center",
+                      color: "#1976D2",
+                      fontWeight: "bold",
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+
+          {/* Drawer Menu */}
+          <List>
+            {[
+              { label: "Careers", path: "/careers" },
+              { label: "Contact Us", path: "/contact-us" },
+            ].map((item, index) => (
+              <ListItem key={index} disablePadding>
+                <ListItemButton
+                  component={Link}
+                  to={item.path}
+                  onClick={handleDrawerToggle} // Missing ">" fixed here
                 >
                   <ListItemText
                     primary={item.label}

@@ -12,3 +12,5 @@ npm install react-slick slick-carousel
 npm install @emailjs/browser
 
 "# Waynautic_website" 
+
+1565c0

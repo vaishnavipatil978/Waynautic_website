@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Typography,
@@ -11,11 +11,9 @@ import { Link } from "react-router-dom";
 import careerImage from "../assets/career.jpg"; // Use an appropriate image from your assets
 
 const Careers = () => {
-
   useEffect(() => {
-      window.scrollTo(0, 0); // Scroll to top when component mounts
-    }, []);
-
+    window.scrollTo(0, 0); // Scroll to top when component mounts
+  }, []);
 
   const jobListings = [
     {
@@ -23,18 +21,21 @@ const Careers = () => {
       location: "Remote",
       description:
         "Develop, test, and maintain scalable Java applications using Spring Boot, Hibernate, and microservices architecture. Work on RESTful APIs, databases, and cloud-based deployments while ensuring clean, efficient, and secure code.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLScaYCpB_xqs_LwEOSFPgJDjpstRxosucUVXJD0RB1iaWortig/viewform",
     },
     {
       title: "Performance Engineer (3 to 5 years of experience)",
       location: "Remote",
       description:
         "Plan, execute, and analyze performance tests using tools like JMeter, LoadRunner, or Neoload. Identify performance bottlenecks, optimize system performance, and collaborate with development teams to ensure scalable and high-performing applications.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSdaf1HXvUe7b5kpa7G6f1JY7aNxmaGPGJauATFZ8rvaWsOtKQ/viewform",
     },
     {
       title: "Automation Engineer (3 to 5 years of experience)",
       location: "Remote",
       description:
         "Design, develop, and maintain automated test scripts for web, mobile, and API testing. Work with Selenium, Appium, or similar tools to enhance test coverage, improve efficiency, and integrate automation into CI/CD pipelines.",
+      link: "https://docs.google.com/forms/d/e/1FAIpQLSdtFwBLpWjoVL3DHgZv7fBkZ0jrrHFIc3_ldb9iOlBM8Wlnxg/viewform",
     },
   ];
 
@@ -85,69 +86,74 @@ const Careers = () => {
       >
         {jobListings.map((job, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-            <Card
-              sx={{
-                background: "#FFFFFF",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-                padding: "11px",
-                borderRadius: "8px",
-              }}
-            >
-              <CardContent>
-                <Typography variant="h6" fontWeight="bold">
-                  {job.title}
-                </Typography>
-                <Typography
-                  variant="body2"
-                  color="text.secondary"
-                  sx={{ mt: 1 }}
+          <Card
+            sx={{
+              background: "#FFFFFF",
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+              padding: "11px",
+              borderRadius: "8px",
+              minHeight: "330px",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <CardContent sx={{ flexGrow: 1 }}> 
+              <Typography variant="h6" fontWeight="bold">
+                {job.title}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                {job.location}
+              </Typography>
+              <Typography variant="body2" sx={{ mt: 2 }}>
+                {job.description}
+              </Typography>
+            </CardContent>
+        
+            {/* Button stays at the bottom */}
+            <Box sx={{ textAlign: "center", pb: 2 }}> 
+              <Button
+                variant="contained"
+                sx={{
+                  background: "linear-gradient(45deg, #1976D2, #0A74DA)",
+                  color: "#fff",
+                  width: "90%",
+                }}
+              >
+                <Link
+                  to={job.link}
+                  target="_blank"
+                  style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  {job.location}
-                </Typography>
-                <Typography variant="body2" sx={{ mt: 2 }}>
-                  {job.description}
-                </Typography>
-
-                <Button
-                  variant="contained"
-                  sx={{
-                    mt: 2,
-                    background: "linear-gradient(45deg, #1976D2, #0A74DA)",
-                    color: "#fff",
-                  }}
-                >
-                  <Link
-                    to="/contact-us"
-                    style={{ textDecoration: "none", color: "inherit" }}
-                  >
-                    Apply Now
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          </Grid>
+                  Apply Now
+                </Link>
+              </Button>
+            </Box>
+          </Card>
+        </Grid>
+        
         ))}
       </Grid>
 
-      <Card
-        variant="outlined"
-        elevation={3}
-        sx={{
-          maxWidth: 400,
-          mx: "auto",
-          mt: 3,
-          p: 2,
-          textAlign: "center",
-          cursor: "pointer",
-          borderColor: "grey.400",
-          "&:hover": { boxShadow: 3 },
-        }}
-        onClick={() => window.open("/contact-us")}
-      >
-        <Typography fontWeight="bold" fontSize="16px" color="#1565c0">
-          🚀 Kickstart your career with us! Apply for an internship.
-        </Typography>
-      </Card>
+      <Link to="/contact-us" style={{ textDecoration: "none" }}>
+        <Card
+          variant="outlined"
+          elevation={3}
+          sx={{
+            maxWidth: 400,
+            mx: "auto",
+            mt: 3,
+            p: 2,
+            textAlign: "center",
+            cursor: "pointer",
+            borderColor: "grey.400",
+            "&:hover": { boxShadow: 3 },
+          }}
+        >
+          <Typography fontWeight="bold" fontSize="16px" color="#1565c0">
+            🚀 Kickstart your career with us! Apply for an internship.
+          </Typography>
+        </Card>
+      </Link>
     </Box>
   );
 };

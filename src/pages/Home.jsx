@@ -7,19 +7,42 @@ import {
   Button,
   Card,
   CardContent,
+  Avatar,
 } from "@mui/material";
 import Divider from "@mui/material/Divider";
 import WhatWeDo from "./WhatWeDo";
-import WhoWeAre from "./WhoWeAre";
+import WhoWeServe from "./WhoWeServe";
 import CaseStudy from "./CaseStudy";
 import backgroundIMG from "../assets/HomeBackground.png";
 import LaunchIMG from "../assets/LaunchIMG.png";
 import banner from "../assets/main.jpg";
+import offering1 from "../assets/offering1.jpg";
+import offering2 from "../assets/offering2.jpg";
+import offering3 from "../assets/offering3.jpg";
+import homePage from "../assets/homePage.jpg";
 
 const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top when component mounts
   }, []);
+
+  const offerings = [
+    {
+      src: offering1,
+      alt: "Offering 1",
+      title: "Software Development",
+    },
+    {
+      src: offering2,
+      alt: "Offering 2",
+      title: "Performance Engineering",
+    },
+    {
+      src: offering3,
+      alt: "Offering 3",
+      title: "AI & ML Solutions",
+    },
+  ];
 
   return (
     <Box sx={{ width: "100%", minHeight: "100vh" }}>
@@ -119,7 +142,7 @@ const Home = () => {
     />
   </Box> */}
 
-      <Box
+      {/* <Box
         sx={{
           height: "42vw",
           display: "flex",
@@ -185,9 +208,86 @@ const Home = () => {
 </Button>
 
         </Box>
-      </Box>
+      </Box> */}
 
-      <Box></Box>
+      <Box
+        sx={{
+          backgroundImage: `url(${homePage})`, // Replace with your image
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          p: 5,
+          minHeight: "100vh",
+          bgcolor: "white",
+          flexDirection: { xs: "column", md: "row" }, // Responsive for mobile
+          gap: 3,
+        }}
+      >
+        {/* Left Side - Company Name */}
+        <Box sx={{ flex: 2, display: "flex", flexDirection: "column", gap: 2, pb:5 }}>
+          <Typography variant="h3" fontWeight="bold" color="#1565c0">
+            Waynautic Technologies
+          </Typography>
+          <Typography variant="h6" color="black">
+          Empowering a smarter, scalable, and resilient future with AI-driven software solutions. With intelligent AI, comprehensive coverage, and accelerated release cycles, we deliver cutting-edge software and quality assurance services to drive innovation and efficiency.
+          </Typography>
+        </Box>
+
+        {/* Right Side - Offerings Section (2 Top, 1 Centered Below) */}
+        <Box
+          sx={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 3,
+          }}
+        >
+          <Grid container spacing={3} justifyContent="center">
+            {/* Top Row (2 Images) */}
+            {offerings.slice(0, 2).map((offering, index) => (
+              <Grid
+                item
+                key={index}
+                xs={6}
+                display="flex"
+                justifyContent="center"
+              >
+                <Box display="flex" flexDirection="column" alignItems="center">
+                  <Avatar
+                    src={offering.src}
+                    alt={offering.alt}
+                    sx={{
+                      width: 150,
+                      height: 150,
+                      border: "1px solid rgb(121, 187, 248)",
+                      boxShadow: 2,
+                    }}
+                  />
+                </Box>
+              </Grid>
+            ))}
+
+            {/* Bottom Row (Single Centered Image) */}
+            <Grid item xs={12} display="flex" justifyContent="center">
+              <Box display="flex" flexDirection="column" alignItems="center">
+                <Avatar
+                  src={offerings[2].src}
+                  alt={offerings[2].alt}
+                  sx={{
+                    width: 150,
+                    height: 150,
+                    border: "1px solid rgb(121, 187, 248)",
+                    boxShadow: 2,
+                  }}
+                />
+              </Box>
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
 
       {/* <Typography variant="h3" fontWeight="bold">
     Waynautic Technologies
@@ -210,7 +310,7 @@ const Home = () => {
       {/* What We Do Section */}
 
       <WhatWeDo />
-      <WhoWeAre />
+      <WhoWeServe />
       <CaseStudy />
     </Box>
   );
