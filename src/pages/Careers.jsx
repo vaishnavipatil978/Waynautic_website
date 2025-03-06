@@ -86,51 +86,57 @@ const Careers = () => {
       >
         {jobListings.map((job, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
-          <Card
-            sx={{
-              background: "#FFFFFF",
-              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-              padding: "11px",
-              borderRadius: "8px",
-              minHeight: "330px",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <CardContent sx={{ flexGrow: 1 }}> 
-              <Typography variant="h6" fontWeight="bold">
-                {job.title}
-              </Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
-                {job.location}
-              </Typography>
-              <Typography variant="body2" sx={{ mt: 2 }}>
-                {job.description}
-              </Typography>
-            </CardContent>
-        
-            {/* Button stays at the bottom */}
-            <Box sx={{ textAlign: "center", pb: 2 }}> 
-              <Button
-                variant="contained"
-                sx={{
-                  background: "linear-gradient(45deg, #1976D2, #0A74DA)",
-                  color: "#fff",
-                  width: "90%",
-                }}
-              >
-                <Link
+            <Card
+              sx={{
+                background: "#FFFFFF",
+                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                padding: "11px",
+                borderRadius: "8px",
+                minHeight: "330px",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography variant="h6" fontWeight="bold">
+                  {job.title}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  color="text.secondary"
+                  sx={{ mt: 1 }}
+                >
+                  {job.location}
+                </Typography>
+                <Typography variant="body2" sx={{ mt: 2 }}>
+                  {job.description}
+                </Typography>
+              </CardContent>
+
+              {/* Button stays at the bottom */}
+              <Box sx={{ textAlign: "center", pb: 2 }}>
+                <Button
+                  variant="contained"
+                  sx={{
+                    background: "linear-gradient(45deg, #1976D2, #0A74DA)",
+                    color: "#ffffff",
+                    width: "90%",
+                  }}
+                  component={Link}
                   to={job.link}
                   target="_blank"
-                  style={{ textDecoration: "none", color: "inherit" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    color: "white",
+                    fontWeight: "bold",
+                  }}
                 >
                   Apply Now
-                </Link>
-              </Button>
-            </Box>
-          </Card>
-        </Grid>
-        
+                </Button>
+              </Box>
+            </Card>
+          </Grid>
         ))}
       </Grid>
 
