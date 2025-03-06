@@ -23,8 +23,18 @@ const sections = [
     id: "services",
     title: "Our Services",
     desc: "We offer a comprehensive suite of QA services.",
-    details: [],
-    List: ["Manage Services", "Tailored Solutions", "Intelligent AI"],
+    details: [{
+      title: "Managed Services",
+      description: "Expertly managed QA solutions to ensure seamless performance and consistent quality across all your projects.",
+    },{
+      title: "Tailored Solutions",
+      description: "Custom QA strategies designed to meet your unique business needs and drive efficiency.",
+    },{
+      title: "Intelligent AI",
+      description: "Leveraging advanced AI technologies to enhance testing accuracy, speed, and automation.",
+    },
+  ],
+    List: [],
     img: servicesImg,
   },
   {

@@ -14,7 +14,7 @@ import {
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import MobileAppProfiling from "../assets/MobileAppProfiling.jpg";
-import CustomeSolutionIMG from "../assets/CustomeSolutionIMG.jpg";
+import CustomeSolutionIMG from "../assets/CustomeSolutionIMG.png";
 import AutoAnalysis from "../assets/AutoAnalysis.jpg";
 import Divider from "@mui/material/Divider";
 import backgroundImage from "../assets/WhoWeAre.png"; // Replace with actual path
@@ -181,7 +181,7 @@ const CaseStudy = () => {
                       image={item.image}
                       alt={item.title}
                       sx={{
-                        height: "150px",
+                        height: "200px",
                         width: "auto",
                         maxWidth: "100%",
                         objectFit: "cover",
@@ -198,12 +198,12 @@ const CaseStudy = () => {
                         justifyContent: "space-between",
                         flexGrow: 1,
                         textAlign: "center",
-                        minHeight: "200px", // Ensures equal height for all cards
+                        minHeight: "180px", // Ensures equal height for all cards
                       }}
                     >
                       <Box>
                         <Typography
-                          variant="h6"
+                          variant="h7"
                           sx={{
                             fontWeight: "bold",
                             color: "#333",

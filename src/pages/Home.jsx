@@ -16,8 +16,8 @@ import CaseStudy from "./CaseStudy";
 import backgroundIMG from "../assets/HomeBackground.png";
 import LaunchIMG from "../assets/LaunchIMG.png";
 import banner from "../assets/main.jpg";
-import offering1 from "../assets/offering1.jpg";
-import offering2 from "../assets/offering2.jpg";
+import offering1 from "../assets/offering1.png";
+import offering2 from "../assets/offering2.png";
 import offering3 from "../assets/offering3.jpg";
 import homePage from "../assets/homePage.jpg";
 
@@ -212,7 +212,9 @@ const Home = () => {
 
       <Box
         sx={{
-          backgroundImage: `url(${homePage})`, // Replace with your image
+          backgroundImage:
+            "linear-gradient(to right,rgb(20, 1, 70),rgb(20, 4, 172))", // Dark blue to light blue gradient
+          // backgroundColor: '#1565c0',
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
@@ -226,12 +228,69 @@ const Home = () => {
         }}
       >
         {/* Left Side - Company Name */}
-        <Box sx={{ flex: 2, display: "flex", flexDirection: "column", gap: 2, pb:5 }}>
-          <Typography variant="h3" fontWeight="bold" color="#1565c0">
+        <Box
+          sx={{
+            flex: 2,
+            display: "flex",
+            flexDirection: "column",
+            gap: 2,
+            pb: 5,
+          }}
+        >
+          <Typography
+            variant="h3"
+            fontWeight="bold"
+            color="#ffffff"
+            sx={{
+              textShadow: "0 0 1px #ffffff, 0 0 2px #42A5F5, 0 0 5px #42A5F5",
+              position: "relative", // Needed for the underline
+              display: "inline-block",
+            }}
+          >
             Waynautic Technologies
+            {/* Underline Effect */}
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: -20, // Adjusts the position of the underline
+                left: 0,
+                width: "70%",
+                height: "1px", // Thickness of underline
+                background: "linear-gradient(to right, white, green)", // Gradient effect
+                boxShadow: "0 0 5px white, 0 0 10px green", // Glow effect
+                borderRadius: "2px",
+              }}
+            />
           </Typography>
-          <Typography variant="h6" color="black">
-          Empowering a smarter, scalable, and resilient future with AI-driven software solutions. With intelligent AI, comprehensive coverage, and accelerated release cycles, we deliver cutting-edge software and quality assurance services to drive innovation and efficiency.
+
+          <Typography variant="h6" color="rgb(197, 218, 247)" mt={3}>
+            Empowering a smarter, scalable, and resilient future with AI-driven
+            software solutions.<br></br> With{" "}
+            <span
+              style={{
+                color: "lightgreen", // Correct CSS color name
+              }}
+            >
+              intelligent AI
+            </span>
+            ,{" "}
+            <span
+              style={{
+                color: "lightgreen", // Correct CSS color name
+              }}
+            >
+              comprehensive coverage
+            </span>
+            , and{" "}
+            <span
+              style={{
+                color: "lightgreen", // Correct CSS color name
+              }}
+            >
+              accelerated release cycles
+            </span>
+            , <br></br>we deliver cutting-edge software and quality assurance
+            services to drive innovation and efficiency.
           </Typography>
         </Box>
 
@@ -246,6 +305,22 @@ const Home = () => {
           }}
         >
           <Grid container spacing={3} justifyContent="center">
+            {/* Bottom Row (Single Centered Image) */}
+            <Grid item xs={12} display="flex" justifyContent="center">
+              <Box display="flex" flexDirection="column" alignItems="center">
+                <Avatar
+                  src={offerings[2].src}
+                  alt={offerings[2].alt}
+                  sx={{
+                    width: 200,
+                    height: 200,
+                    border: "3px solid lightgreen",
+                    boxShadow: 20,
+                  }}
+                />
+              </Box>
+            </Grid>
+
             {/* Top Row (2 Images) */}
             {offerings.slice(0, 2).map((offering, index) => (
               <Grid
@@ -260,31 +335,15 @@ const Home = () => {
                     src={offering.src}
                     alt={offering.alt}
                     sx={{
-                      width: 150,
-                      height: 150,
-                      border: "1px solid rgb(121, 187, 248)",
-                      boxShadow: 2,
+                      width: 160,
+                      height: 160,
+                      border: "3px solid lightgreen",
+                      boxShadow: 20,
                     }}
                   />
                 </Box>
               </Grid>
             ))}
-
-            {/* Bottom Row (Single Centered Image) */}
-            <Grid item xs={12} display="flex" justifyContent="center">
-              <Box display="flex" flexDirection="column" alignItems="center">
-                <Avatar
-                  src={offerings[2].src}
-                  alt={offerings[2].alt}
-                  sx={{
-                    width: 150,
-                    height: 150,
-                    border: "1px solid rgb(121, 187, 248)",
-                    boxShadow: 2,
-                  }}
-                />
-              </Box>
-            </Grid>
           </Grid>
         </Box>
       </Box>

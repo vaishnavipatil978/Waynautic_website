@@ -92,7 +92,7 @@ const Careers = () => {
                 boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                 padding: "11px",
                 borderRadius: "8px",
-                minHeight: "330px",
+                minHeight: "350px",
                 display: "flex",
                 flexDirection: "column",
               }}
