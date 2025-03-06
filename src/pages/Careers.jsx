@@ -127,7 +127,6 @@ const Careers = () => {
                   target="_blank"
                   style={{
                     textDecoration: "none",
-                    color: "inherit",
                     color: "white",
                     fontWeight: "bold",
                   }}
@@ -140,7 +139,7 @@ const Careers = () => {
         ))}
       </Grid>
 
-      <Link to="/contact-us" style={{ textDecoration: "none" }}>
+      <Link to="https://docs.google.com/forms/d/e/1FAIpQLSc06wpviWiagmUCpep9bOXE5Et_1ama-3xJ9tCYk3Nmk2ERyQ/viewform" target="_blank" style={{ textDecoration: "none" }}>
         <Card
           variant="outlined"
           elevation={3}

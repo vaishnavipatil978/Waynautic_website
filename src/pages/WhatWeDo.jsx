@@ -22,7 +22,7 @@ const sections = [
   {
     id: "services",
     title: "Our Services",
-    desc: "We offer a comprehensive suite of QA services.Waynautic Technologies offers expert solutions in Performance Engineering, SRE, AI/ML Testing, Automation, DevOps, Security Compliance, Functional Assurance, and Network Profiling to optimize performance and ensure reliability.",
+    desc: "We offer a comprehensive suite of QA services.",
     details: [],
     List: ["Manage Services", "Tailored Solutions", "Intelligent AI"],
     img: servicesImg,
