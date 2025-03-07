@@ -1,4 +1,4 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 import {
   Container,
@@ -9,15 +9,15 @@ import {
   Box,
   Paper,
   Divider,
+  Snackbar,
+  Alert,
 } from "@mui/material";
 import { Email, Phone, LocationOn } from "@mui/icons-material";
 
 const ContactUs = () => {
-
   useEffect(() => {
-      window.scrollTo(0, 0); // Scroll to top when component mounts
-    }, []);
-
+    window.scrollTo(0, 0);
+  }, []);
 
   const [formData, setFormData] = useState({
     first_name: "",
@@ -28,6 +28,7 @@ const ContactUs = () => {
   });
 
   const [status, setStatus] = useState("");
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,14 +39,15 @@ const ContactUs = () => {
 
     emailjs
       .send(
-        "service_mwko8qe", // Replace with your EmailJS Service ID
-        "template_gy5yd9b", // Replace with your EmailJS Template ID
+        "service_mwko8qe",
+        "template_gy5yd9b",
         formData,
-        "cKsO1eK93OS0xOkt7" // Replace with your EmailJS Public Key
+        "cKsO1eK93OS0xOkt7"
       )
       .then(
         () => {
           setStatus("Message sent successfully!");
+          setOpenSnackbar(true); // Show snackbar
           setFormData({
             first_name: "",
             last_name: "",
@@ -56,6 +58,7 @@ const ContactUs = () => {
         },
         (error) => {
           setStatus("Failed to send message. Try again later.");
+          setOpenSnackbar(true); // Show snackbar for failure as well
           console.error(error);
         }
       );
@@ -73,7 +76,6 @@ const ContactUs = () => {
       }}
     >
       <Container maxWidth="md">
-        {/* Contact Form Section */}
         <Paper
           elevation={5}
           sx={{
@@ -85,18 +87,21 @@ const ContactUs = () => {
             color: "#333",
           }}
         >
-          {/* Header */}
-          <Typography variant="h3" align="center" gutterBottom sx={{ fontWeight: "bold" }}>
+          <Typography
+            variant="h3"
+            align="center"
+            gutterBottom
+            sx={{ fontWeight: "bold" }}
+          >
             Get in Touch
           </Typography>
           <Typography variant="body1" align="center" sx={{ mb: 3 }}>
-            Have a project idea or need expert guidance? Fill out the form below,
-            and we’ll get back to you soon!
+            Have a project idea or need expert guidance? Fill out the form
+            below, and we’ll get back to you soon!
           </Typography>
 
           <Divider sx={{ background: "rgba(255,255,255,0.5)", mb: 3 }} />
 
-          {/* Form */}
           <Box component="form" onSubmit={handleSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -174,44 +179,24 @@ const ContactUs = () => {
               </Grid>
             </Grid>
           </Box>
-
-          {/* Status Message */}
-          {status && (
-            <Typography align="center" color="success.main" sx={{ mt: 2 }}>
-              {status}
-            </Typography>
-          )}
         </Paper>
 
-        {/* Contact Details Section */}
-        <Box sx={{ mt: 6, textAlign: "center", color: "#1E1E1E", fontWeight: "500" }}>
-          <Typography variant="h5" gutterBottom>
-            Contact Information
-          </Typography>
-          <Typography variant="body1" sx={{ mb: 2 }}>
-            You can also reach us directly via the details below.
-          </Typography>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={12} sm={4}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <Email sx={{ color: "#FFD700" }} />
-                <Typography variant="body1">contact@waynautic.com</Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <Phone sx={{ color: "#FFD700" }} />
-                <Typography variant="body1">+91 9637611936</Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} sm={4}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <LocationOn sx={{ color: "#FFD700" }} />
-                <Typography variant="body1">Pune, India</Typography>
-              </Box>
-            </Grid>
-          </Grid>
-        </Box>
+        <Snackbar
+          open={openSnackbar}
+          autoHideDuration={4000}
+          onClose={() => setOpenSnackbar(false)}
+          anchorOrigin={{ vertical: "top", horizontal: "center" }}
+        >
+          <Alert
+            onClose={() => setOpenSnackbar(false)}
+            severity={status.includes("successfully") ? "success" : "error"}
+            sx={{ width: "100%" }}
+          >
+            {status.includes("successfully")
+              ? "Your message has been sent. We will connect with you shortly!"
+              : "Failed to send message. Try again later."}
+          </Alert>
+        </Snackbar>
       </Container>
     </Box>
   );
