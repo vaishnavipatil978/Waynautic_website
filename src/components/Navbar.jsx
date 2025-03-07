@@ -16,14 +16,17 @@ import { Menu as MenuIcon, Close as CloseIcon } from "@mui/icons-material";
 import logo from "../assets/Waynautic.png";
 
 const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+const handleDrawerToggle = () => {
+  setMobileOpen((prev) => !prev);
+};
+
   const [activeSection, setActiveSection] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+
 
   // Scroll to section, navigating to home first if necessary
   
@@ -192,11 +195,19 @@ const Navbar = () => {
             height: "100vh",
             background: "#FFFFFF",
             color: "#1976D2",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            padding: 1,
+            position: "relative",
           }}
         >
           <IconButton
-            sx={{ float: "right", margin: 1, color: "#1976D2" }}
-            onClick={handleDrawerToggle}
+            sx={{ color: "#1976D2", position: "absolute", 
+              top: 8, 
+              right: 8  }}
+            onClick={() => setMobileOpen(false)}
+
           >
             <CloseIcon />
           </IconButton>

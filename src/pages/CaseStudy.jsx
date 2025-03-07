@@ -65,7 +65,7 @@ const CaseStudy = () => {
   ];
 
   return (
-    <Box id="CaseStudy" paddingTop={10}>
+    <Box id="CaseStudy" paddingTop={3}>
       {/* Keep the rest of the KnowledgeBase page unchanged */}
       {sectionDetails.map((section, index) => (
         <Box>

@@ -54,7 +54,7 @@ const WhoWeAre = () => {
       id="WhoWeServe"
       sx={{
         backgroundColor: "#F9FAFC",
-        minHeight: "100vh",
+        minHeight: "auto",
         overflowX: "hidden",
       }}
     >
@@ -191,7 +191,7 @@ const WhoWeAre = () => {
             alt={clientIMG}
             style={{
               width: "100%",
-              maxWidth: "1100px",
+              // maxWidth: "1100px",
               height: "auto",
               borderRadius: "10px",
               // boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
